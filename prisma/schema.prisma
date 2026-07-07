@@ -1,0 +1,161 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum EnrollmentStatus {
+  PENDING
+  CONFIRMED
+  DROPPED
+}
+
+enum DayOfWeek {
+  SATURDAY
+  SUNDAY
+  MONDAY
+  TUESDAY
+  WEDNESDAY
+  THURSDAY
+  FRIDAY
+}
+
+model Academy {
+  id            String         @id @default(cuid())
+  slug          String         @unique
+  name          String
+  description   String?
+  learningPaths LearningPath[]
+  courses       Course[]
+  students      Student[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+}
+
+model LearningPath {
+  id          String   @id @default(cuid())
+  slug        String
+  name        String
+  description String?
+  academyId   String
+  academy     Academy  @relation(fields: [academyId], references: [id])
+  courses     Course[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([academyId, slug])
+}
+
+model Course {
+  id             String          @id @default(cuid())
+  code           String
+  name           String
+  description    String?
+  units          Int
+  academyId      String
+  academy        Academy         @relation(fields: [academyId], references: [id])
+  learningPathId String?
+  learningPath   LearningPath?   @relation(fields: [learningPathId], references: [id])
+  sections       CourseSection[]
+  prerequisites  Prerequisite[]  @relation("CoursePrerequisites")
+  requiredFor    Prerequisite[]  @relation("RequiredCourse")
+  completions    CompletedCourse[]
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+
+  @@unique([academyId, code])
+}
+
+model Prerequisite {
+  id               String @id @default(cuid())
+  courseId         String
+  course           Course @relation("CoursePrerequisites", fields: [courseId], references: [id])
+  requiredCourseId String
+  requiredCourse   Course @relation("RequiredCourse", fields: [requiredCourseId], references: [id])
+
+  @@unique([courseId, requiredCourseId])
+}
+
+model CourseSection {
+  id             String       @id @default(cuid())
+  courseId       String
+  course         Course       @relation(fields: [courseId], references: [id])
+  sectionNumber  String
+  instructor     String
+  capacity       Int
+  enrolledCount  Int          @default(0)
+  semesterId     String
+  semester       Semester     @relation(fields: [semesterId], references: [id])
+  schedules      Schedule[]
+  enrollments    Enrollment[]
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
+
+  @@unique([courseId, sectionNumber, semesterId])
+}
+
+model Schedule {
+  id        String        @id @default(cuid())
+  sectionId String
+  section   CourseSection @relation(fields: [sectionId], references: [id])
+  day       DayOfWeek
+  startTime String
+  endTime   String
+
+  @@unique([sectionId, day, startTime])
+}
+
+model Semester {
+  id              String          @id @default(cuid())
+  name            String
+  isActive        Boolean         @default(false)
+  enrollmentStart DateTime
+  enrollmentEnd   DateTime
+  sections        CourseSection[]
+  enrollments     Enrollment[]
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+}
+
+model Student {
+  id          String       @id @default(cuid())
+  userId      String       @unique
+  firstName   String
+  lastName    String
+  email       String       @unique
+  academyId   String
+  academy     Academy          @relation(fields: [academyId], references: [id])
+  enrollments Enrollment[]
+  completions CompletedCourse[]
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+}
+
+model Enrollment {
+  id         String           @id @default(cuid())
+  studentId  String
+  student    Student          @relation(fields: [studentId], references: [id])
+  sectionId  String
+  section    CourseSection    @relation(fields: [sectionId], references: [id])
+  semesterId String
+  semester   Semester         @relation(fields: [semesterId], references: [id])
+  status     EnrollmentStatus @default(PENDING)
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+
+  @@unique([studentId, sectionId, semesterId])
+}
+
+model CompletedCourse {
+  id        String   @id @default(cuid())
+  studentId String
+  student   Student  @relation(fields: [studentId], references: [id])
+  courseId  String
+  course    Course   @relation(fields: [courseId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([studentId, courseId])
+}

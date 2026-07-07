@@ -9,10 +9,10 @@ export default getRequestConfig(async ({requestLocale}) => {
     ? requested
     : defaultLocale;
 
+  const enrollment = await import(`./dictionaries/${locale}/enrollment.json`);
+
   return {
     locale,
-    messages: (
-      await import(`./dictionaries/${locale}/common.json`)
-    ).default
+    messages: enrollment.default,
   };
 });

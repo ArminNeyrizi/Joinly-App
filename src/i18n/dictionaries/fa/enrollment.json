@@ -1,0 +1,91 @@
+{
+  "app": {
+    "name": "جوینلی"
+  },
+  "nav": {
+    "dashboard": "داشبورد",
+    "enrollment": "انتخاب واحد",
+    "home": "خانه"
+  },
+  "home": {
+    "title": "به Joinly خوش آمدید",
+    "subtitle": "پلتفرم مدرن برای یادگیری، پروژه‌های واقعی و رشد حرفه‌ای",
+    "cta": "شروع انتخاب واحد"
+  },
+  "enrollment": {
+    "title": "انتخاب واحد",
+    "subtitle": "دروس ترم جاری را انتخاب کنید",
+    "semester": "ترم",
+    "units": "واحد",
+    "unitsProgress": "{current} از {max} واحد",
+    "minUnits": "حداقل {min} واحد الزامی است",
+    "maxUnits": "حداکثر {max} واحد مجاز است",
+    "enrollmentClosed": "مهلت انتخاب واحد به پایان رسیده",
+    "enrollmentOpen": "انتخاب واحد تا {date} باز است",
+    "tabs": {
+      "catalog": "فهرست دروس",
+      "selected": "انتخاب‌های من"
+    },
+    "search": "جستجوی دروس...",
+    "allPaths": "همه مسیرها",
+    "courseCode": "کد",
+    "instructor": "استاد",
+    "section": "گروه",
+    "capacity": "ظرفیت",
+    "schedule": "برنامه",
+    "unitsLabel": "{count} واحد",
+    "spotsLeft": "{count} جای خالی",
+    "full": "تکمیل",
+    "prerequisites": "پیش‌نیاز",
+    "noPrerequisites": "بدون پیش‌نیاز",
+    "prerequisiteMissing": "پیش‌نیاز برآورده نشده",
+    "selectSection": "انتخاب",
+    "selected": "انتخاب شده",
+    "remove": "حذف",
+    "confirm": "تأیید نهایی",
+    "confirming": "در حال تأیید...",
+    "emptySelection": "هنوز درسی انتخاب نکرده‌اید",
+    "emptySelectionHint": "از فهرست دروس، دروس مورد نظر را انتخاب کنید",
+    "totalUnits": "مجموع واحد",
+    "pendingStatus": "در انتظار تأیید",
+    "confirmedStatus": "تأیید شده",
+    "days": {
+      "SATURDAY": "شنبه",
+      "SUNDAY": "یکشنبه",
+      "MONDAY": "دوشنبه",
+      "TUESDAY": "سه‌شنبه",
+      "WEDNESDAY": "چهارشنبه",
+      "THURSDAY": "پنج‌شنبه",
+      "FRIDAY": "جمعه"
+    },
+    "errors": {
+      "ENROLLMENT_CLOSED": "مهلت انتخاب واحد به پایان رسیده",
+      "SECTION_NOT_FOUND": "گروه درسی یافت نشد",
+      "ALREADY_ENROLLED": "قبلاً در این گروه ثبت‌نام کرده‌اید",
+      "COURSE_ALREADY_SELECTED": "برای این درس قبلاً گروهی انتخاب کرده‌اید",
+      "SECTION_FULL": "ظرفیت این گروه تکمیل شده",
+      "PREREQUISITE_NOT_MET": "پیش‌نیازهای درس برآورده نشده",
+      "MAX_UNITS_EXCEEDED": "حداکثر واحد مجاز رعایت نشده",
+      "SCHEDULE_CONFLICT": "تداخل زمانی با درس دیگر",
+      "ENROLLMENT_NOT_FOUND": "ثبت‌نام یافت نشد",
+      "MIN_UNITS_NOT_MET": "حداقل واحد الزامی رعایت نشده",
+      "INVALID_INPUT": "ورودی نامعتبر",
+      "GENERIC": "خطایی رخ داد. دوباره تلاش کنید."
+    },
+    "success": {
+      "ENROLLED": "درس به لیست انتخاب شما اضافه شد",
+      "DROPPED": "درس از لیست انتخاب حذف شد",
+      "CONFIRMED": "انتخاب واحد شما با موفقیت تأیید شد"
+    }
+  },
+  "dashboard": {
+    "title": "داشبورد دانشجو",
+    "welcome": "سلام، {name}",
+    "quickActions": "دسترسی سریع",
+    "goToEnrollment": "انتخاب واحد",
+    "currentSemester": "ترم جاری",
+    "enrolledCourses": "دروس انتخاب‌شده",
+    "totalUnits": "مجموع واحد",
+    "noCourses": "هنوز درسی انتخاب نشده"
+  }
+}

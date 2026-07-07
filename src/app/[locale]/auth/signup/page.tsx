@@ -1,0 +1,40 @@
+import { getTranslations } from "next-intl/server";
+import Link from "next/link";
+
+import { SignupForm } from "@/modules/auth/components/signup-form";
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "auth" });
+
+  return {
+    title: t?.("signupTitle") ?? "ایجاد حساب کاربری",
+  };
+}
+
+export default async function SignupPage({ params }: Props) {
+  const { locale } = await params;
+
+  return (
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-4 py-12 sm:px-6 lg:px-8 bg-background">
+      {/* Background glow effects */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+        <div className="h-[40rem] w-[40rem] rounded-full bg-purple-600/10 blur-[128px]" />
+      </div>
+
+      <div className="relative w-full max-w-md space-y-8">
+        <div className="flex flex-col items-center text-center">
+          <Link href={`/${locale}`} className="text-3xl font-black tracking-tight text-white hover:opacity-90">
+            Join<span className="text-purple-500">ly</span>
+          </Link>
+        </div>
+
+        <SignupForm locale={locale} />
+      </div>
+    </div>
+  );
+}
