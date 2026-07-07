@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
 import { Clock, Trash2, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -27,13 +26,11 @@ type Props = {
   onSuccess: (message: string) => void;
 };
 
-function getErrorMessage(
-  t: ReturnType<typeof useTranslations<"enrollment">>,
-  error: string,
-) {
-  const key = `errors.${error}` as Parameters<typeof t>[0];
-  return t(key, { defaultValue: t("errors.GENERIC") });
-}
+// نگاشت روزهای هفته
+const dayMap: Record<string, string> = {
+  saturday: "شنبه", sunday: "یک‌شنبه", monday: "دوشنبه",
+  tuesday: "سه‌شنبه", wednesday: "چهارشنبه", thursday: "پنج‌شنبه", friday: "جمعه"
+};
 
 export function SelectedCourses({
   data,
@@ -41,7 +38,6 @@ export function SelectedCourses({
   onError,
   onSuccess,
 }: Props) {
-  const t = useTranslations("enrollment");
   const [isPending, startTransition] = useTransition();
   const [droppingId, setDroppingId] = useState<string | null>(null);
 
@@ -56,9 +52,9 @@ export function SelectedCourses({
       setDroppingId(null);
       if (result.success) {
         onUpdate(result.data);
-        onSuccess(t(`success.${result.message ?? "DROPPED"}`));
+        onSuccess("درس با موفقیت حذف شد");
       } else {
-        onError(getErrorMessage(t, result.error));
+        onError("خطایی در حذف درس رخ داد");
       }
     });
   }
@@ -68,9 +64,9 @@ export function SelectedCourses({
       const result = await confirmEnrollmentAction();
       if (result.success) {
         onUpdate(result.data);
-        onSuccess(t(`success.${result.message ?? "CONFIRMED"}`));
+        onSuccess("انتخاب واحد با موفقیت تأیید شد");
       } else {
-        onError(getErrorMessage(t, result.error));
+        onError("خطایی در تأیید نهایی رخ داد");
       }
     });
   }
@@ -78,9 +74,9 @@ export function SelectedCourses({
   if (data.enrollments.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-border/50 py-16 text-center">
-        <p className="text-muted-foreground">{t("emptySelection")}</p>
+        <p className="text-muted-foreground">هنوز درسی انتخاب نکرده‌اید</p>
         <p className="mt-1 text-sm text-muted-foreground/70">
-          {t("emptySelectionHint")}
+          برای شروع، از لیست دروس، گروه‌های مورد نظر خود را اضافه کنید.
         </p>
       </div>
     );
@@ -97,7 +93,7 @@ export function SelectedCourses({
             <div>
               <CardTitle className="text-base">{item.course.name}</CardTitle>
               <CardDescription className="font-mono text-xs">
-                {item.course.code} · {t("section")} {item.section.sectionNumber}
+                {item.course.code} · گروه {item.section.sectionNumber}
               </CardDescription>
             </div>
             <div className="flex items-center gap-2">
@@ -110,8 +106,8 @@ export function SelectedCourses({
                 )}
               >
                 {item.enrollment.status === "CONFIRMED"
-                  ? t("confirmedStatus")
-                  : t("pendingStatus")}
+                  ? "تأیید شده"
+                  : "در انتظار تأیید"}
               </span>
               {item.enrollment.status === "PENDING" &&
                 data.summary.isEnrollmentOpen && (
@@ -139,12 +135,12 @@ export function SelectedCourses({
                   className="inline-flex items-center gap-1 rounded-md bg-muted/50 px-2 py-0.5 text-xs"
                 >
                   <Clock className="size-3" />
-                  {t(`days.${slot.day}`)} {slot.startTime}-{slot.endTime}
+                  {dayMap[slot.day] || slot.day} {slot.startTime}-{slot.endTime}
                 </span>
               ))}
             </div>
             <p className="text-xs text-purple-300">
-              {t("unitsLabel", { count: item.course.units })}
+              {item.course.units} واحد
             </p>
           </CardContent>
         </Card>
@@ -152,7 +148,7 @@ export function SelectedCourses({
 
       <div className="sticky bottom-4 rounded-xl border border-border/50 bg-card/90 p-4 backdrop-blur-xl">
         <div className="mb-3 flex items-center justify-between">
-          <span className="text-sm text-muted-foreground">{t("totalUnits")}</span>
+          <span className="text-sm text-muted-foreground">مجموع واحدها</span>
           <span className="font-semibold">{data.summary.totalUnits}</span>
         </div>
         {pendingCount > 0 && data.summary.isEnrollmentOpen && (
@@ -161,7 +157,7 @@ export function SelectedCourses({
             disabled={isPending}
             onClick={handleConfirm}
           >
-            {isPending ? t("confirming") : t("confirm")}
+            {isPending ? "در حال تأیید..." : "تأیید نهایی انتخاب واحد"}
           </Button>
         )}
       </div>

@@ -2,11 +2,10 @@ import { AppHeader } from "./app-header";
 
 type Props = {
   children: React.ReactNode;
-  locale: string;
   currentPath?: string;
 };
 
-export function AppShell({ children, locale, currentPath }: Props) {
+export function AppShell({ children, currentPath }: Props) {
   return (
     <div className="relative min-h-screen">
       <div
@@ -17,7 +16,7 @@ export function AppShell({ children, locale, currentPath }: Props) {
         <div className="absolute top-1/3 end-1/4 h-80 w-80 rounded-full bg-indigo-600/8 blur-3xl" />
       </div>
 
-      <AppHeader locale={locale} currentPath={currentPath} />
+      <AppHeader currentPath={currentPath} />
       <main className="mx-auto max-w-7xl px-4 py-8 sm:px-6">{children}</main>
     </div>
   );

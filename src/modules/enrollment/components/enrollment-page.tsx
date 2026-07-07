@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useTranslations } from "next-intl";
 import { CalendarDays, CheckCircle2, XCircle } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -13,13 +12,11 @@ import { UnitProgress } from "./unit-progress";
 
 type Props = {
   initialData: EnrollmentPageData;
-  locale: string;
 };
 
 type Tab = "catalog" | "selected";
 
-export function EnrollmentPage({ initialData, locale }: Props) {
-  const t = useTranslations("enrollment");
+export function EnrollmentPage({ initialData }: Props) {
   const [data, setData] = useState(initialData);
   const [activeTab, setActiveTab] = useState<Tab>("catalog");
   const [toast, setToast] = useState<{ type: "success" | "error"; message: string } | null>(null);
@@ -30,21 +27,26 @@ export function EnrollmentPage({ initialData, locale }: Props) {
   }
 
   const enrollmentEndDate = new Date(data.summary.semester.enrollmentEnd).toLocaleDateString(
-    locale === "fa" ? "fa-IR" : "en-US",
+    "fa-IR",
     { year: "numeric", month: "long", day: "numeric" },
   );
+
+  const tabs: { key: Tab; label: string }[] = [
+    { key: "catalog", label: "لیست دروس" },
+    { key: "selected", label: "دروس انتخاب‌شده" },
+  ];
 
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
-        <p className="mt-1 text-muted-foreground">{t("subtitle")}</p>
+        <h1 className="text-2xl font-bold tracking-tight">انتخاب واحد</h1>
+        <p className="mt-1 text-muted-foreground">مدیریت و ثبت دروس ترم جاری</p>
       </div>
 
       <div className="flex flex-wrap items-center gap-3 text-sm">
         <span className="inline-flex items-center gap-1.5 rounded-full border border-border/50 bg-card/50 px-3 py-1 text-muted-foreground">
           <CalendarDays className="size-3.5" />
-          {t("semester")}: {data.summary.semester.name}
+          نیم‌سال: {data.summary.semester.name}
         </span>
         <span
           className={cn(
@@ -55,8 +57,8 @@ export function EnrollmentPage({ initialData, locale }: Props) {
           )}
         >
           {data.summary.isEnrollmentOpen
-            ? t("enrollmentOpen", { date: enrollmentEndDate })
-            : t("enrollmentClosed")}
+            ? `مهلت انتخاب واحد تا ${enrollmentEndDate}`
+            : "مهلت انتخاب واحد تمام شده است"}
         </span>
       </div>
 
@@ -64,28 +66,25 @@ export function EnrollmentPage({ initialData, locale }: Props) {
         current={data.summary.totalUnits}
         max={data.summary.maxUnits}
         min={data.summary.minUnits}
-        label={t("unitsProgress", {
-          current: data.summary.totalUnits,
-          max: data.summary.maxUnits,
-        })}
-        minLabel={t("minUnits", { min: data.summary.minUnits })}
+        label={`${data.summary.totalUnits} از ${data.summary.maxUnits} واحد`}
+        minLabel={`حداقل: ${data.summary.minUnits}`}
       />
 
       <div className="flex gap-1 rounded-lg border border-border/50 bg-card/30 p-1">
-        {(["catalog", "selected"] as const).map((tab) => (
+        {tabs.map((tab) => (
           <button
-            key={tab}
+            key={tab.key}
             type="button"
-            onClick={() => setActiveTab(tab)}
+            onClick={() => setActiveTab(tab.key)}
             className={cn(
               "flex-1 rounded-md px-4 py-2 text-sm font-medium transition-colors",
-              activeTab === tab
+              activeTab === tab.key
                 ? "bg-purple-500/10 text-purple-300"
                 : "text-muted-foreground hover:text-foreground",
             )}
           >
-            {t(`tabs.${tab}`)}
-            {tab === "selected" && data.enrollments.length > 0 && (
+            {tab.label}
+            {tab.key === "selected" && data.enrollments.length > 0 && (
               <span className="ms-1.5 rounded-full bg-purple-500/20 px-1.5 py-0.5 text-xs">
                 {data.enrollments.length}
               </span>

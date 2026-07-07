@@ -10,31 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { signInAction } from "../actions/auth.actions";
 
-interface LoginFormProps {
-  locale: string;
-}
-
-export function LoginForm({ locale }: LoginFormProps) {
+export function LoginForm() {
   const router = useRouter();
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
-
-  const isFa = locale === "fa";
-
-  const labels = {
-    title: isFa ? "ورود به حساب" : "Sign In",
-    description: isFa
-      ? "برای دسترسی به پنل کاربری وارد شوید"
-      : "Enter your credentials to access your account",
-    email: isFa ? "ایمیل" : "Email",
-    password: isFa ? "رمز عبور" : "Password",
-    submit: isFa ? "ورود" : "Sign In",
-    noAccount: isFa ? "حساب کاربری ندارید؟" : "Don't have an account?",
-    signupLink: isFa ? "ثبت‌نام کنید" : "Sign up",
-    invalidInput: isFa ? "اطلاعات وارد شده نامعتبر است" : "Invalid email or password structure",
-    invalidCreds: isFa ? "ایمیل یا رمز عبور اشتباه است" : "Invalid email or password",
-    genericError: isFa ? "خطایی رخ داد. دوباره تلاش کنید" : "Something went wrong. Please try again",
-  };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -48,20 +27,20 @@ export function LoginForm({ locale }: LoginFormProps) {
 
       if (!response.success) {
         if (response.error === "INVALID_INPUT") {
-          setError(labels.invalidInput);
+          setError("اطلاعات وارد شده نامعتبر است");
         } else if (response.error === "INVALID_CREDENTIALS") {
-          setError(labels.invalidCreds);
+          setError("ایمیل یا رمز عبور اشتباه است");
         } else {
-          setError(labels.genericError);
+          setError("خطایی رخ داد. دوباره تلاش کنید");
         }
         setLoading(false);
         return;
       }
 
-      router.push(`/${locale}/dashboard`);
+      router.push("/dashboard");
       router.refresh();
     } catch (err) {
-      setError(labels.genericError);
+      setError("خطایی رخ داد. دوباره تلاش کنید");
       setLoading(false);
     }
   }
@@ -69,8 +48,10 @@ export function LoginForm({ locale }: LoginFormProps) {
   return (
     <Card className="border-border/40 bg-card/60 backdrop-blur-md shadow-2xl">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold tracking-tight text-center">{labels.title}</CardTitle>
-        <CardDescription className="text-center text-muted-foreground">{labels.description}</CardDescription>
+        <CardTitle className="text-2xl font-bold tracking-tight text-center">ورود به حساب</CardTitle>
+        <CardDescription className="text-center text-muted-foreground">
+          برای دسترسی به پنل کاربری وارد شوید
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -82,7 +63,7 @@ export function LoginForm({ locale }: LoginFormProps) {
 
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-              {labels.email}
+              ایمیل
             </label>
             <Input
               id="email"
@@ -98,7 +79,7 @@ export function LoginForm({ locale }: LoginFormProps) {
 
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-              {labels.password}
+              رمز عبور
             </label>
             <Input
               id="password"
@@ -120,17 +101,20 @@ export function LoginForm({ locale }: LoginFormProps) {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {isFa ? "در حال ورود..." : "Signing in..."}
+                در حال ورود...
               </>
             ) : (
-              labels.submit
+              "ورود"
             )}
           </Button>
 
           <div className="text-center text-sm text-muted-foreground mt-4">
-            {labels.noAccount}{" "}
-            <Link href={`/${locale}/auth/signup`} className="text-purple-400 hover:text-purple-300 font-semibold underline decoration-2 underline-offset-4">
-              {labels.signupLink}
+            حساب کاربری ندارید؟{" "}
+            <Link 
+              href="/auth/signup" 
+              className="text-purple-400 hover:text-purple-300 font-semibold underline decoration-2 underline-offset-4"
+            >
+              ثبت‌نام کنید
             </Link>
           </div>
         </form>

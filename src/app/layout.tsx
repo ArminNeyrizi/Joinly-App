@@ -49,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html suppressHydrationWarning className="dark">
+    <html suppressHydrationWarning className="dark" dir="rtl" lang="fa">
       <body className={`${kalameh.variable} min-h-screen bg-background font-sans text-foreground antialiased`}>
         {children}
       </body>

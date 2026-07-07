@@ -1,7 +1,6 @@
 "use client";
 
 import { useMemo, useState, useTransition } from "react";
-import { useTranslations } from "next-intl";
 import { BookOpen, Clock, Search, User, Users } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -14,9 +13,7 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-import {
-  enrollInSectionAction,
-} from "../actions/enrollment.actions";
+import { enrollInSectionAction } from "../actions/enrollment.actions";
 import { canEnrollInSection } from "../utils/enrollment-rules";
 import type { CourseWithSections, EnrollmentPageData } from "../types";
 
@@ -27,16 +24,13 @@ type Props = {
   onSuccess: (message: string) => void;
 };
 
-function getErrorMessage(
-  t: ReturnType<typeof useTranslations<"enrollment">>,
-  error: string,
-) {
-  const key = `errors.${error}` as Parameters<typeof t>[0];
-  return t(key, { defaultValue: t("errors.GENERIC") });
-}
+// نگاشت روزهای هفته
+const dayMap: Record<string, string> = {
+  saturday: "شنبه", sunday: "یک‌شنبه", monday: "دوشنبه",
+  tuesday: "سه‌شنبه", wednesday: "چهارشنبه", thursday: "پنج‌شنبه", friday: "جمعه"
+};
 
 export function CourseCatalog({ data, onUpdate, onError, onSuccess }: Props) {
-  const t = useTranslations("enrollment");
   const [search, setSearch] = useState("");
   const [pathFilter, setPathFilter] = useState<string>("all");
   const [pendingSection, setPendingSection] = useState<string | null>(null);
@@ -66,9 +60,10 @@ export function CourseCatalog({ data, onUpdate, onError, onSuccess }: Props) {
       setPendingSection(null);
       if (result.success) {
         onUpdate(result.data);
-        onSuccess(t(`success.${result.message ?? "ENROLLED"}`));
+        onSuccess("درس با موفقیت انتخاب شد");
       } else {
-        onError(getErrorMessage(t, result.error));
+        // مدیریت خطاهای ثابت
+        onError("خطایی در انتخاب واحد رخ داد. دوباره تلاش کنید");
       }
     });
   }
@@ -80,7 +75,7 @@ export function CourseCatalog({ data, onUpdate, onError, onSuccess }: Props) {
           <Search className="absolute start-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
           <input
             type="search"
-            placeholder={t("search")}
+            placeholder="جستجوی دروس..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="h-9 w-full rounded-lg border border-border/50 bg-card/50 ps-9 pe-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
@@ -91,7 +86,7 @@ export function CourseCatalog({ data, onUpdate, onError, onSuccess }: Props) {
           onChange={(e) => setPathFilter(e.target.value)}
           className="h-9 rounded-lg border border-border/50 bg-card/50 px-3 text-sm outline-none focus:border-purple-500/50 focus:ring-2 focus:ring-purple-500/20"
         >
-          <option value="all">{t("allPaths")}</option>
+          <option value="all">همه گرایش‌ها</option>
           {data.learningPaths.map((path) => (
             <option key={path.id} value={path.id}>
               {path.name}
@@ -134,7 +129,6 @@ function CourseCard({
   isPending,
   onEnroll,
 }: CourseCardProps) {
-  const t = useTranslations("enrollment");
 
   const prerequisiteNames = course.prerequisiteIds
     .map((id) => data.courses.find((c) => c.id === id)?.name)
@@ -157,7 +151,7 @@ function CourseCard({
             </CardDescription>
           </div>
           <span className="shrink-0 rounded-full bg-purple-500/10 px-2.5 py-0.5 text-xs font-medium text-purple-300">
-            {t("unitsLabel", { count: course.units })}
+            {course.units} واحد
           </span>
         </div>
         {course.description && (
@@ -169,15 +163,12 @@ function CourseCard({
         <div className="flex items-center gap-2 text-xs text-muted-foreground">
           <BookOpen className="size-3.5" />
           <span>
-            {t("prerequisites")}:{" "}
-            {prerequisiteNames.length > 0
-              ? prerequisiteNames.join("، ")
-              : t("noPrerequisites")}
+            پیش‌نیازها: {prerequisiteNames.length > 0 ? prerequisiteNames.join("، ") : "ندارد"}
           </span>
         </div>
 
         {hasMissingPrerequisite && (
-          <p className="text-xs text-amber-400">{t("prerequisiteMissing")}</p>
+          <p className="text-xs text-amber-400">پیش‌نیازهای این درس را نگذرانده‌اید</p>
         )}
 
         <div className="space-y-2">
@@ -201,7 +192,7 @@ function CourseCard({
                   <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
                     <span className="flex items-center gap-1.5 text-muted-foreground">
                       <Users className="size-3.5" />
-                      {t("section")} {section.sectionNumber}
+                      گروه {section.sectionNumber}
                     </span>
                     <span className="flex items-center gap-1.5 text-muted-foreground">
                       <User className="size-3.5" />
@@ -209,9 +200,7 @@ function CourseCard({
                     </span>
                     <span className="flex items-center gap-1.5 text-muted-foreground">
                       <Users className="size-3.5" />
-                      {isFull
-                        ? t("full")
-                        : t("spotsLeft", { count: spotsLeft })}
+                      {isFull ? "تکمیل شده" : `${spotsLeft} ظرفیت`}
                     </span>
                   </div>
                   <div className="flex flex-wrap gap-2">
@@ -221,7 +210,7 @@ function CourseCard({
                         className="inline-flex items-center gap-1 rounded-md bg-muted/50 px-2 py-0.5 text-xs text-muted-foreground"
                       >
                         <Clock className="size-3" />
-                        {t(`days.${slot.day}`)} {slot.startTime}-{slot.endTime}
+                        {dayMap[slot.day] || slot.day} {slot.startTime}-{slot.endTime}
                       </span>
                     ))}
                   </div>
@@ -238,7 +227,7 @@ function CourseCard({
                       "bg-gradient-to-l from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500",
                   )}
                 >
-                  {isEnrolled ? t("selected") : t("selectSection")}
+                  {isEnrolled ? "انتخاب‌شده" : "انتخاب گروه"}
                 </Button>
               </div>
             );

@@ -10,33 +10,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input";
 import { signUpAction } from "../actions/auth.actions";
 
-interface SignupFormProps {
-  locale: string;
-}
-
-export function SignupForm({ locale }: SignupFormProps) {
+export function SignupForm() {
   const router = useRouter();
   const [error, setError] = React.useState<string | null>(null);
   const [loading, setLoading] = React.useState(false);
-
-  const isFa = locale === "fa";
-
-  const labels = {
-    title: isFa ? "ایجاد حساب کاربری" : "Create Account",
-    description: isFa
-      ? "مشخصات خود را برای ثبت‌نام وارد کنید"
-      : "Enter your details to create a new account",
-    firstName: isFa ? "نام" : "First Name",
-    lastName: isFa ? "نام خانوادگی" : "Last Name",
-    email: isFa ? "ایمیل" : "Email",
-    password: isFa ? "رمز عبور" : "Password",
-    submit: isFa ? "ثبت‌نام" : "Sign Up",
-    hasAccount: isFa ? "قبلاً ثبت‌نام کرده‌اید؟" : "Already have an account?",
-    loginLink: isFa ? "وارد شوید" : "Sign in",
-    invalidInput: isFa ? "اطلاعات وارد شده نامعتبر است" : "Invalid fields, check password length (min 8)",
-    emailInUse: isFa ? "این ایمیل قبلاً ثبت شده است" : "Email is already registered",
-    genericError: isFa ? "خطایی رخ داد. دوباره تلاش کنید" : "Something went wrong. Please try again",
-  };
 
   async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -50,21 +27,21 @@ export function SignupForm({ locale }: SignupFormProps) {
 
       if (!response.success) {
         if (response.error === "INVALID_INPUT") {
-          setError(labels.invalidInput);
+          setError("اطلاعات وارد شده نامعتبر است (رمز عبور باید حداقل ۸ کاراکتر باشد)");
         } else if (response.error === "EMAIL_ALREADY_IN_USE") {
-          setError(labels.emailInUse);
+          setError("این ایمیل قبلاً ثبت شده است");
         } else {
-          setError(labels.genericError);
+          setError("خطایی رخ داد. دوباره تلاش کنید");
         }
         setLoading(false);
         return;
       }
 
-      // Success redirects to login or dashboard
-      router.push(`/${locale}/auth/login`);
+      // هدایت به صفحه لاگین
+      router.push("/auth/login");
       router.refresh();
     } catch (err) {
-      setError(labels.genericError);
+      setError("خطایی رخ داد. دوباره تلاش کنید");
       setLoading(false);
     }
   }
@@ -72,8 +49,10 @@ export function SignupForm({ locale }: SignupFormProps) {
   return (
     <Card className="border-border/40 bg-card/60 backdrop-blur-md shadow-2xl">
       <CardHeader className="space-y-1">
-        <CardTitle className="text-2xl font-bold tracking-tight text-center">{labels.title}</CardTitle>
-        <CardDescription className="text-center text-muted-foreground">{labels.description}</CardDescription>
+        <CardTitle className="text-2xl font-bold tracking-tight text-center">ایجاد حساب کاربری</CardTitle>
+        <CardDescription className="text-center text-muted-foreground">
+          مشخصات خود را برای ثبت‌نام وارد کنید
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -86,13 +65,13 @@ export function SignupForm({ locale }: SignupFormProps) {
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-                {labels.firstName}
+                نام
               </label>
               <Input
                 id="firstName"
                 name="firstName"
                 type="text"
-                placeholder={isFa ? "آرمین" : "John"}
+                placeholder="آرمین"
                 required
                 disabled={loading}
                 className="bg-background/40"
@@ -100,13 +79,13 @@ export function SignupForm({ locale }: SignupFormProps) {
             </div>
             <div className="space-y-2">
               <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-                {labels.lastName}
+                نام خانوادگی
               </label>
               <Input
                 id="lastName"
                 name="lastName"
                 type="text"
-                placeholder={isFa ? "محمدی" : "Doe"}
+                placeholder="محمدی"
                 required
                 disabled={loading}
                 className="bg-background/40"
@@ -116,7 +95,7 @@ export function SignupForm({ locale }: SignupFormProps) {
 
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-              {labels.email}
+              ایمیل
             </label>
             <Input
               id="email"
@@ -132,7 +111,7 @@ export function SignupForm({ locale }: SignupFormProps) {
 
           <div className="space-y-2">
             <label className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block">
-              {labels.password}
+              رمز عبور
             </label>
             <Input
               id="password"
@@ -154,17 +133,20 @@ export function SignupForm({ locale }: SignupFormProps) {
             {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                {isFa ? "در حال ثبت‌نام..." : "Creating account..."}
+                در حال ثبت‌نام...
               </>
             ) : (
-              labels.submit
+              "ثبت‌نام"
             )}
           </Button>
 
           <div className="text-center text-sm text-muted-foreground mt-4">
-            {labels.hasAccount}{" "}
-            <Link href={`/${locale}/auth/login`} className="text-purple-400 hover:text-purple-300 font-semibold underline decoration-2 underline-offset-4">
-              {labels.loginLink}
+            قبلاً ثبت‌نام کرده‌اید؟{" "}
+            <Link 
+              href="/auth/login" 
+              className="text-purple-400 hover:text-purple-300 font-semibold underline decoration-2 underline-offset-4"
+            >
+              وارد شوید
             </Link>
           </div>
         </form>

@@ -1,13 +1,13 @@
-# 📁 Joinly-App - Project Structure
+# 📁 joinly-app - Project Structure
 
-*Generated on: 7/6/2026, 10:19:31 PM*
+*Generated on: 7/7/2026, 6:34:15 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
-| 📄 Total Files | 30 |
-| 📁 Total Folders | 71 |
+| 📄 Total Files | 106 |
+| 📁 Total Folders | 83 |
 | 🌳 Max Depth | 4 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
@@ -25,59 +25,81 @@
 
 ### By File Type
 
-- 🔤 **.ttf** (TrueType fonts): 9 files (30.0%)
-- 🔷 **.ts** (TypeScript files): 5 files (16.7%)
-- ⚙️ **.json** (JSON files): 4 files (13.3%)
-- ⚛️ **.tsx** (React TypeScript files): 4 files (13.3%)
-- 📖 **.md** (Markdown files): 2 files (6.7%)
-- 📄 **.mjs** (Other files): 2 files (6.7%)
-- 📄 **.** (Other files): 1 files (3.3%)
-- 🚫 **.gitignore** (Git ignore): 1 files (3.3%)
-- 🖼️ **.ico** (Icon files): 1 files (3.3%)
-- 🎨 **.css** (Stylesheets): 1 files (3.3%)
+- 🔷 **.ts** (TypeScript files): 64 files (60.4%)
+- ⚛️ **.tsx** (React TypeScript files): 17 files (16.0%)
+- 🔤 **.ttf** (TrueType fonts): 9 files (8.5%)
+- ⚙️ **.json** (JSON files): 4 files (3.8%)
+- 📖 **.md** (Markdown files): 2 files (1.9%)
+- 📄 **.mjs** (Other files): 2 files (1.9%)
+- 📄 **.example** (Other files): 1 files (0.9%)
+- 📄 **.** (Other files): 1 files (0.9%)
+- 🚫 **.gitignore** (Git ignore): 1 files (0.9%)
+- 📄 **.sql** (Other files): 1 files (0.9%)
+- 📄 **.prisma** (Other files): 1 files (0.9%)
+- 🖼️ **.jpg** (JPEG images): 1 files (0.9%)
+- 🖼️ **.ico** (Icon files): 1 files (0.9%)
+- 🎨 **.css** (Stylesheets): 1 files (0.9%)
 
 ### By Category
 
-- **Assets**: 10 files (33.3%)
-- **TypeScript**: 5 files (16.7%)
-- **Config**: 4 files (13.3%)
-- **React**: 4 files (13.3%)
-- **Other**: 3 files (10.0%)
-- **Docs**: 2 files (6.7%)
-- **DevOps**: 1 files (3.3%)
-- **Styles**: 1 files (3.3%)
+- **TypeScript**: 64 files (60.4%)
+- **React**: 17 files (16.0%)
+- **Assets**: 11 files (10.4%)
+- **Other**: 6 files (5.7%)
+- **Config**: 4 files (3.8%)
+- **Docs**: 2 files (1.9%)
+- **DevOps**: 1 files (0.9%)
+- **Styles**: 1 files (0.9%)
 
 ### 📁 Largest Directories
 
-- **root**: 30 files
-- **src**: 18 files
-- **src/assets/fonts**: 9 files
-- **src/assets**: 9 files
-- **src/app**: 4 files
+- **root**: 106 files
+- **src**: 87 files
+- **src/modules**: 34 files
+- **src/generated/prisma**: 18 files
+- **src/generated**: 18 files
 
 ## 🌳 Directory Structure
 
 ```
-Joinly-App/
+joinly-app/
+├── 📄 .env.example
 ├── 📄 .gitattributes
 ├── 🟡 🚫 **.gitignore**
 ├── ⚙️ components.json
 ├── 🔵 🔍 **eslint.config.mjs**
+├── 🔷 middleware.ts
 ├── 🔷 next-env.d.ts
 ├── 🟡 ▲ **next.config.ts**
 ├── 🟡 🔒 **package-lock.json**
 ├── 🔴 📦 **package.json**
 ├── 📄 postcss.config.mjs
+├── 📂 prisma/
+│   ├── 📂 migrations/
+│   │   └── 📂 20260707063000_init/
+│   │   │   └── 📄 migration.sql
+│   ├── 📄 schema.prisma
+│   └── 🔷 seed.ts
+├── 🔷 prisma.config.ts
 ├── 📖 project_structure.md
 ├── 🌐 public/
+│   └── 🖼️ hero.jpg
 ├── 🔴 📖 **README.md**
 ├── 📁 src/
 │   ├── 🚀 app/
-│   │   ├── 📂 [locale]/
-│   │   │   ├── ⚛️ layout.tsx
+│   │   ├── 📂 auth/
+│   │   │   ├── 📂 login/
+│   │   │   │   └── ⚛️ page.tsx
+│   │   │   └── 📂 signup/
+│   │   │   │   └── ⚛️ page.tsx
+│   │   ├── 📂 dashboard/
+│   │   │   └── ⚛️ page.tsx
+│   │   ├── 📂 enrollment/
 │   │   │   └── ⚛️ page.tsx
 │   │   ├── 🖼️ favicon.ico
-│   │   └── 🎨 globals.css
+│   │   ├── 🎨 globals.css
+│   │   ├── ⚛️ layout.tsx
+│   │   └── ⚛️ page.tsx
 │   ├── 📦 assets/
 │   │   ├── 📂 fonts/
 │   │   │   ├── 🔤 Kalameh-Black.ttf
@@ -94,70 +116,140 @@ Joinly-App/
 │   ├── 🧩 components/
 │   │   ├── 📂 common/
 │   │   ├── 📂 layout/
+│   │   │   ├── ⚛️ app-header.tsx
+│   │   │   └── ⚛️ app-shell.tsx
 │   │   └── 🎨 ui/
 │   │   │   ├── ⚛️ button.tsx
-│   │   │   └── ⚛️ card.tsx
+│   │   │   ├── ⚛️ card.tsx
+│   │   │   └── ⚛️ input.tsx
 │   ├── ⚙️ config/
+│   │   ├── 🔷 colors.ts
+│   │   ├── 🔷 index.ts
+│   │   ├── 🔷 radius.ts
+│   │   ├── 🔷 shadow.ts
+│   │   ├── 🔷 spacing.ts
+│   │   └── 🔷 typography.ts
+│   ├── 📂 constants/
+│   ├── 📂 generated/
+│   │   └── 📂 prisma/
+│   │   │   ├── 🔷 browser.ts
+│   │   │   ├── 🔷 client.ts
+│   │   │   ├── 🔷 commonInputTypes.ts
+│   │   │   ├── 🔷 enums.ts
+│   │   │   ├── 📂 internal/
+│   │   │   │   ├── 🔷 class.ts
+│   │   │   │   ├── 🔷 prismaNamespace.ts
+│   │   │   │   └── 🔷 prismaNamespaceBrowser.ts
+│   │   │   ├── 📂 models/
+│   │   │   │   ├── 🔷 Academy.ts
+│   │   │   │   ├── 🔷 CompletedCourse.ts
+│   │   │   │   ├── 🔷 Course.ts
+│   │   │   │   ├── 🔷 CourseSection.ts
+│   │   │   │   ├── 🔷 Enrollment.ts
+│   │   │   │   ├── 🔷 LearningPath.ts
+│   │   │   │   ├── 🔷 Prerequisite.ts
+│   │   │   │   ├── 🔷 Schedule.ts
+│   │   │   │   ├── 🔷 Semester.ts
+│   │   │   │   └── 🔷 Student.ts
+│   │   │   └── 🔷 models.ts
 │   ├── 🎣 hooks/
-│   ├── 📂 i18n/
-│   │   ├── 🔷 config.ts
-│   │   ├── 📂 dictionaries/
-│   │   │   ├── 📂 en/
-│   │   │   └── 📂 fa/
-│   │   └── 🔷 index.ts
 │   ├── 📚 lib/
+│   │   ├── 🔷 db.ts
+│   │   ├── 🔷 errors.ts
+│   │   ├── 🔷 logger.ts
+│   │   ├── 📂 supabase/
+│   │   │   ├── 🔷 client.ts
+│   │   │   └── 🔷 server.ts
 │   │   └── 🔷 utils.ts
 │   ├── 📂 modules/
 │   │   ├── 📂 academy/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 academy.actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   ├── 📂 constants/
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 academy.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 academy.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   └── 📂 validation/
 │   │   ├── 📂 auth/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 auth.actions.ts
 │   │   │   ├── 🧩 components/
+│   │   │   │   ├── ⚛️ login-form.tsx
+│   │   │   │   └── ⚛️ signup-form.tsx
 │   │   │   ├── 📂 constants/
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 auth.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 auth.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   └── 📂 validation/
+│   │   │   │   └── 🔷 index.ts
 │   │   ├── 📂 course/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 course.actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   ├── 📂 constants/
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 course.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 course.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   └── 📂 validation/
 │   │   ├── 📂 dashboard/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 dashboard.actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   ├── 📂 constants/
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 dashboard.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 dashboard.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   └── 📂 validation/
 │   │   ├── 📂 enrollment/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 enrollment.actions.ts
 │   │   │   ├── 🧩 components/
+│   │   │   │   ├── ⚛️ course-catalog.tsx
+│   │   │   │   ├── ⚛️ enrollment-page.tsx
+│   │   │   │   ├── ⚛️ selected-courses.tsx
+│   │   │   │   └── ⚛️ unit-progress.tsx
 │   │   │   ├── 📂 constants/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 enrollment.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 enrollment.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
+│   │   │   ├── 🔧 utils/
+│   │   │   │   └── 🔷 enrollment-rules.ts
 │   │   │   └── 📂 validation/
+│   │   │   │   └── 🔷 index.ts
 │   │   └── 📂 learning-path/
 │   │   │   ├── 📂 actions/
+│   │   │   │   └── 🔷 learning-path.actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   ├── 📂 constants/
 │   │   │   ├── 📂 repository/
+│   │   │   │   └── 🔷 learning-path.repository.ts
 │   │   │   ├── 📂 services/
+│   │   │   │   └── 🔷 learning-path.service.ts
 │   │   │   ├── 📂 types/
+│   │   │   │   └── 🔷 index.ts
 │   │   │   └── 📂 validation/
+│   ├── 📂 providers/
 │   ├── 📂 services/
+│   ├── 🎨 styles/
 │   ├── 📂 types/
+│   │   └── 🔷 api.ts
 │   └── 🔧 utils/
 └── 🟡 🔷 **tsconfig.json**
 ```
@@ -170,6 +262,7 @@ Joinly-App/
 - 📖 Docs: Markdown files
 - ⚙️ Config: JSON files
 - 🔷 TypeScript: TypeScript files
+- 🖼️ Assets: JPEG images
 - ⚛️ React: React TypeScript files
 - 🖼️ Assets: Icon files
 - 🎨 Styles: Stylesheets

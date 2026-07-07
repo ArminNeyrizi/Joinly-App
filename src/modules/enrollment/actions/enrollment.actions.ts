@@ -39,7 +39,8 @@ export async function enrollInSectionAction(sectionId: string) {
       return apiError(result.error);
     }
 
-    revalidatePath("/[locale]/enrollment", "page");
+    // اصلاح مسیر در اینجا
+    revalidatePath("/enrollment", "page");
     return apiSuccess(await getEnrollmentPageData(authUser.id), "ENROLLED");
   } catch (error) {
     return apiError("UNAUTHORIZED");
@@ -59,7 +60,8 @@ export async function dropEnrollmentAction(enrollmentId: string) {
       return apiError(result.error);
     }
 
-    revalidatePath("/[locale]/enrollment", "page");
+    // اصلاح مسیر در اینجا
+    revalidatePath("/enrollment", "page");
     return apiSuccess(await getEnrollmentPageData(authUser.id), "DROPPED");
   } catch (error) {
     return apiError("UNAUTHORIZED");
@@ -79,7 +81,7 @@ export async function confirmEnrollmentAction() {
       return apiError(result.error);
     }
 
-    revalidatePath("/[locale]/enrollment", "page");
+    revalidatePath("/enrollment", "page");
     return apiSuccess(await getEnrollmentPageData(authUser.id), "CONFIRMED");
   } catch (error) {
     return apiError("UNAUTHORIZED");
