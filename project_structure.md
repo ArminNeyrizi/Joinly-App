@@ -1,13 +1,13 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 7/7/2026, 6:34:15 PM*
+*Generated on: 7/7/2026, 10:43:42 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
 | 📄 Total Files | 106 |
-| 📁 Total Folders | 83 |
+| 📁 Total Folders | 92 |
 | 🌳 Max Depth | 4 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
@@ -85,6 +85,7 @@ joinly-app/
 ├── 🌐 public/
 │   └── 🖼️ hero.jpg
 ├── 🔴 📖 **README.md**
+├── 📂 scripts/
 ├── 📁 src/
 │   ├── 🚀 app/
 │   │   ├── 📂 auth/
@@ -233,7 +234,7 @@ joinly-app/
 │   │   │   │   └── 🔷 enrollment-rules.ts
 │   │   │   └── 📂 validation/
 │   │   │   │   └── 🔷 index.ts
-│   │   └── 📂 learning-path/
+│   │   ├── 📂 learning-path/
 │   │   │   ├── 📂 actions/
 │   │   │   │   └── 🔷 learning-path.actions.ts
 │   │   │   ├── 🧩 components/
@@ -244,6 +245,14 @@ joinly-app/
 │   │   │   │   └── 🔷 learning-path.service.ts
 │   │   │   ├── 📂 types/
 │   │   │   │   └── 🔷 index.ts
+│   │   │   └── 📂 validation/
+│   │   └── 📂 todo/
+│   │   │   ├── 📂 actions/
+│   │   │   ├── 🧩 components/
+│   │   │   ├── 📂 constants/
+│   │   │   ├── 📂 repository/
+│   │   │   ├── 📂 services/
+│   │   │   ├── 📂 types/
 │   │   │   └── 📂 validation/
 │   ├── 📂 providers/
 │   ├── 📂 services/

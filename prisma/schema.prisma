@@ -130,6 +130,7 @@ model Student {
   academy     Academy          @relation(fields: [academyId], references: [id])
   enrollments Enrollment[]
   completions CompletedCourse[]
+  todos       Todo[]           
   createdAt   DateTime     @default(now())
   updatedAt   DateTime     @updatedAt
 }
@@ -158,4 +159,22 @@ model CompletedCourse {
   createdAt DateTime @default(now())
 
   @@unique([studentId, courseId])
+}
+
+model Todo {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  completed   Boolean  @default(false)
+  priority    Int      @default(2) // 1=Low, 2=Medium, 3=High, 4=Urgent
+  dueDate     DateTime?
+  studentId   String   @map("student_id") // Changed from userId to match your schema
+  
+  // Relation to Student
+  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  
+  @@map("todos")
 }
