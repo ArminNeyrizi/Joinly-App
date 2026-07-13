@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { BookOpen, GraduationCap } from "lucide-react";
+import { BookOpen, GraduationCap, ListChecks } from "lucide-react";
 import { redirect } from "next/navigation";
 
 import { AppShell } from "@/components/layout/app-shell";
@@ -23,7 +23,7 @@ export default async function DashboardPage() {
   try {
     const authUser = await getAuthUser();
     dashboardData = await getDashboardData(authUser.id);
-  } catch (error) {
+  } catch {
     redirect("/auth/login");
   }
 
@@ -67,14 +67,14 @@ export default async function DashboardPage() {
               عملیات سریع
             </CardTitle>
           </CardHeader>
-          <CardContent>
-            <Button
-              nativeButton={false}
-              render={<Link href="/enrollment" />}
-              className="bg-gradient-to-l from-purple-600 to-indigo-600 text-white hover:from-purple-500 hover:to-indigo-500"
-            >
-              <BookOpen className="size-4" />
+          <CardContent className="flex flex-wrap gap-2">
+            <Button nativeButton={false} render={<Link href="/enrollment" />}>
+              <BookOpen data-icon="inline-start" />
               رفتن به انتخاب واحد
+            </Button>
+            <Button nativeButton={false} render={<Link href="/todos" />} variant="outline">
+              <ListChecks data-icon="inline-start" />
+              مدیریت کارها
             </Button>
           </CardContent>
         </Card>
@@ -85,7 +85,7 @@ export default async function DashboardPage() {
               <CardTitle className="text-base">دوره‌های انتخاب‌شده</CardTitle>
             </CardHeader>
             <CardContent className="space-y-2">
-              {dashboardData.activeEnrollments.map((item: any) => (
+              {dashboardData.activeEnrollments.map((item) => (
                 <div
                   key={item.id}
                   className="flex items-center justify-between rounded-lg border border-border/40 px-3 py-2 text-sm"
