@@ -13,8 +13,8 @@ import {
 } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 
-import { enrollInSectionAction } from "../actions/enrollment.actions";
-import { canEnrollInSection } from "../utils/enrollment-rules";
+import { enrollInSectionAction } from "../actions";
+import { canEnrollInSection } from "../enrollment-rules";
 import type { CourseWithSections, EnrollmentPageData } from "../types";
 
 type Props = {

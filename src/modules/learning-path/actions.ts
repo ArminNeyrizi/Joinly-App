@@ -3,7 +3,7 @@
 import { NotFoundError } from "@/lib/errors";
 import { apiError, apiSuccess } from "@/types/api";
 
-import { getLearningPathDetail, getLearningPaths } from "../services/learning-path.service";
+import { getLearningPathDetail, getLearningPaths } from "./service";
 
 export async function getLearningPathsAction(academyId: string) {
   const paths = await getLearningPaths(academyId);

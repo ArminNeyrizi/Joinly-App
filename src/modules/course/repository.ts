@@ -8,7 +8,7 @@ import type {
   CourseWithSections,
   DayOfWeek,
   ScheduleSlot,
-} from "../types";
+} from "./types";
 
 function mapDay(day: PrismaDayOfWeek): DayOfWeek {
   return day as DayOfWeek;

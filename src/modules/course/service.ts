@@ -4,8 +4,8 @@ import {
   findCourseById,
   findCoursesByAcademy,
   findCoursesWithSectionsByAcademy,
-} from "../repository/course.repository";
-import type { Course, CourseDetail, CourseWithSections } from "../types";
+} from "./repository";
+import type { Course, CourseDetail, CourseWithSections } from "./types";
 
 export async function getCourseList(academyId: string): Promise<Course[]> {
   return findCoursesByAcademy(academyId);

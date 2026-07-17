@@ -7,7 +7,7 @@ import {
   getCourseDetail,
   getCourseList,
   getCourseListWithSections,
-} from "../services/course.service";
+} from "./service";
 
 export async function getCourseListAction(academyId: string) {
   const courses = await getCourseList(academyId);

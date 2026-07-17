@@ -2,7 +2,7 @@ import { prisma } from "@/lib/db";
 import { UnauthorizedError } from "@/lib/errors";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-import type { AuthUser } from "../types";
+import type { AuthUser } from "./types";
 
 /**
  * Returns the currently authenticated Supabase user.

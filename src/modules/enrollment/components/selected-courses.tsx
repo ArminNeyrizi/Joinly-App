@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import {
   confirmEnrollmentAction,
   dropEnrollmentAction,
-} from "../actions/enrollment.actions";
+} from "../actions";
 import type { EnrollmentPageData } from "../types";
 
 type Props = {

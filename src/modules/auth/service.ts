@@ -1,7 +1,7 @@
 import { logger } from "@/lib/logger";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-import type { AuthError, AuthUser, SignInInput, SignUpInput } from "../types";
+import type { AuthError, AuthUser, SignInInput, SignUpInput } from "./types";
 
 type AuthResult<T> =
   | { success: true; data: T }

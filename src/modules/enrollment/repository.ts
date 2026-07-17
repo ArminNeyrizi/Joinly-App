@@ -16,7 +16,7 @@ import type {
   ScheduleSlot,
   Semester,
   Student,
-} from "../types";
+} from "..";
 
 
 const sectionInclude = {

@@ -1,4 +1,4 @@
-import { ENROLLMENT_LIMITS } from "../constants";
+import { ENROLLMENT_LIMITS } from "./constants";
 import {
   confirmPendingEnrollments,
   createEnrollment,
@@ -13,13 +13,13 @@ import {
   mapSemester,
   mapStudent,
   toEnrollmentItems,
-} from "../repository/enrollment.repository";
+} from "./repository";
 import type {
   EnrollmentItem,
   EnrollmentPageData,
   EnrollmentSummary,
   ScheduleSlot,
-} from "../types";
+} from "./types";
 
 function isEnrollmentPeriodOpen(semester: {
   enrollmentStart: Date;
