@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { getDashboardData } from "@/modules/dashboard/service";
-import { getAuthUser } from "@/modules/auth/repository/auth.repository";
+import { getAuthUser } from "@/modules/auth/repository";
 
 export const metadata = {
   title: "داشبورد دانشجویی",

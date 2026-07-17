@@ -5,7 +5,7 @@ import { ArrowLeft, BookOpen, Cpu, Layers, Award, Clock } from "lucide-react";
 import { AppShell } from "@/components/layout/app-shell";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { getAcademyList } from "@/modules/academy/services/academy.service";
+import { getAcademyList } from "@/modules/academy/service";
 
 export const metadata = {
   title: "Joinly — پلتفرم مرکزی آموزش و توسعه مهارت",
