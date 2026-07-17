@@ -4,8 +4,8 @@ import {
   findAcademiesWithStats,
   findAcademyById,
   findAcademyBySlug,
-} from "../repository/academy.repository";
-import type { Academy, AcademyWithStats } from "../types";
+} from "./repository";
+import type { Academy, AcademyWithStats } from "./types";
 
 export async function getAcademyList(): Promise<AcademyWithStats[]> {
   return findAcademiesWithStats();

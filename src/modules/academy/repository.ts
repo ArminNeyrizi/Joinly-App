@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import type { Academy, AcademyWithStats } from "../types";
+import type { Academy, AcademyWithStats } from "./types";
 
 function mapAcademy(academy: {
   id: string;

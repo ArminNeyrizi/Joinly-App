@@ -3,8 +3,8 @@ import { NotFoundError } from "@/lib/errors";
 import {
   findLearningPathBySlug,
   findLearningPathsByAcademy,
-} from "../repository/learning-path.repository";
-import type { LearningPath, LearningPathDetail } from "../types";
+} from "./repository";
+import type { LearningPath, LearningPathDetail } from "./types";
 
 export async function getLearningPaths(academyId: string): Promise<LearningPath[]> {
   return findLearningPathsByAcademy(academyId);

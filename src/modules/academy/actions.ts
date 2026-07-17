@@ -7,7 +7,7 @@ import {
   getAcademyById,
   getAcademyBySlug,
   getAcademyList,
-} from "../services/academy.service";
+} from "./service";
 
 export async function getAcademyListAction() {
   const academies = await getAcademyList();

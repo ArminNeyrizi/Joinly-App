@@ -11,7 +11,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { getDashboardData } from "@/modules/dashboard/services/dashboard.service";
+import { getDashboardData } from "@/modules/dashboard/service";
 import { getAuthUser } from "@/modules/auth/repository/auth.repository";
 
 export const metadata = {

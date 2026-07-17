@@ -1,13 +1,13 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 7/7/2026, 10:43:42 PM*
+*Generated on: 7/17/2026, 10:33:39 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
-| 📄 Total Files | 106 |
-| 📁 Total Folders | 92 |
+| 📄 Total Files | 108 |
+| 📁 Total Folders | 38 |
 | 🌳 Max Depth | 4 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
@@ -25,16 +25,17 @@
 
 ### By File Type
 
-- 🔷 **.ts** (TypeScript files): 64 files (60.4%)
-- ⚛️ **.tsx** (React TypeScript files): 17 files (16.0%)
-- 🔤 **.ttf** (TrueType fonts): 9 files (8.5%)
-- ⚙️ **.json** (JSON files): 4 files (3.8%)
+- 🔷 **.ts** (TypeScript files): 64 files (59.3%)
+- ⚛️ **.tsx** (React TypeScript files): 17 files (15.7%)
+- 🔤 **.ttf** (TrueType fonts): 9 files (8.3%)
+- ⚙️ **.json** (JSON files): 4 files (3.7%)
 - 📖 **.md** (Markdown files): 2 files (1.9%)
 - 📄 **.mjs** (Other files): 2 files (1.9%)
+- 📄 **.sql** (Other files): 2 files (1.9%)
 - 📄 **.example** (Other files): 1 files (0.9%)
 - 📄 **.** (Other files): 1 files (0.9%)
 - 🚫 **.gitignore** (Git ignore): 1 files (0.9%)
-- 📄 **.sql** (Other files): 1 files (0.9%)
+- ⚙️ **.toml** (TOML files): 1 files (0.9%)
 - 📄 **.prisma** (Other files): 1 files (0.9%)
 - 🖼️ **.jpg** (JPEG images): 1 files (0.9%)
 - 🖼️ **.ico** (Icon files): 1 files (0.9%)
@@ -42,18 +43,18 @@
 
 ### By Category
 
-- **TypeScript**: 64 files (60.4%)
-- **React**: 17 files (16.0%)
-- **Assets**: 11 files (10.4%)
-- **Other**: 6 files (5.7%)
-- **Config**: 4 files (3.8%)
+- **TypeScript**: 64 files (59.3%)
+- **React**: 17 files (15.7%)
+- **Assets**: 11 files (10.2%)
+- **Other**: 7 files (6.5%)
+- **Config**: 5 files (4.6%)
 - **Docs**: 2 files (1.9%)
 - **DevOps**: 1 files (0.9%)
 - **Styles**: 1 files (0.9%)
 
 ### 📁 Largest Directories
 
-- **root**: 106 files
+- **root**: 108 files
 - **src**: 87 files
 - **src/modules**: 34 files
 - **src/generated/prisma**: 18 files
@@ -76,8 +77,11 @@ joinly-app/
 ├── 📄 postcss.config.mjs
 ├── 📂 prisma/
 │   ├── 📂 migrations/
-│   │   └── 📂 20260707063000_init/
+│   │   ├── 📂 20260707063000_init/
 │   │   │   └── 📄 migration.sql
+│   │   ├── 📂 20260707192358_add_todos/
+│   │   │   └── 📄 migration.sql
+│   │   └── ⚙️ migration_lock.toml
 │   ├── 📄 schema.prisma
 │   └── 🔷 seed.ts
 ├── 🔷 prisma.config.ts
@@ -85,7 +89,6 @@ joinly-app/
 ├── 🌐 public/
 │   └── 🖼️ hero.jpg
 ├── 🔴 📖 **README.md**
-├── 📂 scripts/
 ├── 📁 src/
 │   ├── 🚀 app/
 │   │   ├── 📂 auth/
@@ -130,7 +133,6 @@ joinly-app/
 │   │   ├── 🔷 shadow.ts
 │   │   ├── 🔷 spacing.ts
 │   │   └── 🔷 typography.ts
-│   ├── 📂 constants/
 │   ├── 📂 generated/
 │   │   └── 📂 prisma/
 │   │   │   ├── 🔷 browser.ts
@@ -164,102 +166,49 @@ joinly-app/
 │   │   └── 🔷 utils.ts
 │   ├── 📂 modules/
 │   │   ├── 📂 academy/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 academy.actions.ts
-│   │   │   ├── 🧩 components/
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 academy.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 academy.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   └── 📂 validation/
+│   │   │   ├── 🔷 actions.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   └── 🔷 types.ts
 │   │   ├── 📂 auth/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 auth.actions.ts
+│   │   │   ├── 🔷 actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   │   ├── ⚛️ login-form.tsx
 │   │   │   │   └── ⚛️ signup-form.tsx
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 auth.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 auth.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   └── 📂 validation/
-│   │   │   │   └── 🔷 index.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   ├── 🔷 types.ts
+│   │   │   └── 🔷 validation.ts
 │   │   ├── 📂 course/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 course.actions.ts
-│   │   │   ├── 🧩 components/
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 course.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 course.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   └── 📂 validation/
+│   │   │   ├── 🔷 actions.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   └── 🔷 types.ts
 │   │   ├── 📂 dashboard/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 dashboard.actions.ts
-│   │   │   ├── 🧩 components/
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 dashboard.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 dashboard.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   └── 📂 validation/
+│   │   │   ├── 🔷 actions.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   └── 🔷 types.ts
 │   │   ├── 📂 enrollment/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 enrollment.actions.ts
+│   │   │   ├── 🔷 actions.ts
 │   │   │   ├── 🧩 components/
 │   │   │   │   ├── ⚛️ course-catalog.tsx
 │   │   │   │   ├── ⚛️ enrollment-page.tsx
 │   │   │   │   ├── ⚛️ selected-courses.tsx
 │   │   │   │   └── ⚛️ unit-progress.tsx
-│   │   │   ├── 📂 constants/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 enrollment.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 enrollment.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   ├── 🔧 utils/
-│   │   │   │   └── 🔷 enrollment-rules.ts
-│   │   │   └── 📂 validation/
-│   │   │   │   └── 🔷 index.ts
-│   │   ├── 📂 learning-path/
-│   │   │   ├── 📂 actions/
-│   │   │   │   └── 🔷 learning-path.actions.ts
-│   │   │   ├── 🧩 components/
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   │   └── 🔷 learning-path.repository.ts
-│   │   │   ├── 📂 services/
-│   │   │   │   └── 🔷 learning-path.service.ts
-│   │   │   ├── 📂 types/
-│   │   │   │   └── 🔷 index.ts
-│   │   │   └── 📂 validation/
-│   │   └── 📂 todo/
-│   │   │   ├── 📂 actions/
-│   │   │   ├── 🧩 components/
-│   │   │   ├── 📂 constants/
-│   │   │   ├── 📂 repository/
-│   │   │   ├── 📂 services/
-│   │   │   ├── 📂 types/
-│   │   │   └── 📂 validation/
-│   ├── 📂 providers/
-│   ├── 📂 services/
-│   ├── 🎨 styles/
-│   ├── 📂 types/
+│   │   │   ├── 🔷 constants.ts
+│   │   │   ├── 🔷 enrollment-rules.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   ├── 🔷 types.ts
+│   │   │   └── 🔷 validation.ts
+│   │   └── 📂 learning-path/
+│   │   │   ├── 🔷 actions.ts
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   └── 🔷 types.ts
+│   └── 📂 types/
 │   │   └── 🔷 api.ts
-│   └── 🔧 utils/
 └── 🟡 🔷 **tsconfig.json**
 ```
 
@@ -271,6 +220,7 @@ joinly-app/
 - 📖 Docs: Markdown files
 - ⚙️ Config: JSON files
 - 🔷 TypeScript: TypeScript files
+- ⚙️ Config: TOML files
 - 🖼️ Assets: JPEG images
 - ⚛️ React: React TypeScript files
 - 🖼️ Assets: Icon files

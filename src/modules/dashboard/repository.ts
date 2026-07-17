@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import type { DashboardData } from "../types";
+import type { DashboardData } from "./types";
 
 export async function findDashboardDataByUserId(
   userId: string,

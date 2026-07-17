@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 
-import { getAuthUser } from "@/modules/auth/repository/auth.repository";
+import { getAuthUser } from "@/modules/auth/repository";
 import { apiError, apiSuccess } from "@/types/api";
 
 import {
@@ -10,12 +10,12 @@ import {
   dropEnrollment,
   enrollInSection,
   getEnrollmentPageData,
-} from "../services/enrollment.service";
+} from "./service";
 import {
   confirmEnrollmentSchema,
   dropEnrollmentSchema,
   enrollSectionSchema,
-} from "../validation";
+} from "./validation";
 
 export async function getEnrollmentDataAction() {
   try {

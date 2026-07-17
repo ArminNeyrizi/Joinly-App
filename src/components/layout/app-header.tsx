@@ -5,7 +5,7 @@ import * as React from "react";
 import { LogOut } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { getCurrentUserAction, signOutAction } from "@/modules/auth/actions/auth.actions";
+import { getCurrentUserAction, signOutAction } from "@/modules/auth/actions";
 
 type Props = {
   currentPath?: string;

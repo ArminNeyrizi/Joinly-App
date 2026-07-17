@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/db";
 
-import type { LearningPath, LearningPathDetail } from "../types";
+import type { LearningPath, LearningPathDetail } from "./types";
 
 function mapLearningPath(lp: {
   id: string;

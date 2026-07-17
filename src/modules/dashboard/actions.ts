@@ -1,10 +1,10 @@
 "use server";
 
-import { getAuthUser } from "@/modules/auth/repository/auth.repository";
+import { getAuthUser } from "@/modules/auth/repository";
 import { NotFoundError } from "@/lib/errors";
 import { apiError, apiSuccess } from "@/types/api";
 
-import { getDashboardData } from "../services/dashboard.service";
+import { getDashboardData } from "./service";
 
 export async function getDashboardDataAction() {
   try {

@@ -1,4 +1,4 @@
-import type { EnrollmentPageData } from "../types";
+import type { EnrollmentPageData } from "./types";
 
 function hasScheduleConflict(
   a: { day: string; startTime: string; endTime: string }[],

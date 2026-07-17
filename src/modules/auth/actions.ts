@@ -6,8 +6,8 @@ import { prisma } from "@/lib/db";
 import { logger } from "@/lib/logger";
 import { apiError, apiSuccess } from "@/types/api";
 
-import { signInSchema, signUpSchema } from "../validation";
-import { getCurrentUser, signIn, signOut, signUp } from "../services/auth.service";
+import { signInSchema, signUpSchema } from "./validation";
+import { getCurrentUser, signIn, signOut, signUp } from "./service";
 
 export async function signInAction(formData: FormData) {
   const raw = {
