@@ -7,7 +7,12 @@ export type DayOfWeek =
   | "THURSDAY"
   | "FRIDAY";
 
-export type EnrollmentStatus = "PENDING" | "CONFIRMED" | "DROPPED";
+export type EnrollmentStatus =
+  | "PENDING"
+  | "HOLD"
+  | "APPROVED"
+  | "REJECTED"
+  | "DROPPED";
 
 export type ScheduleSlot = {
   day: DayOfWeek;
@@ -75,6 +80,7 @@ export type Enrollment = {
   sectionId: string;
   semesterId: string;
   status: EnrollmentStatus;
+  rejectReason?: string;
 };
 
 export type CourseWithSections = Course & {

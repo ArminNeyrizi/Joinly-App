@@ -134,6 +134,7 @@ function mapEnrollment(enrollment: {
   sectionId: string;
   semesterId: string;
   status: EnrollmentStatus;
+  rejectReason: string | null;
 }): Enrollment {
   return {
     id: enrollment.id,
@@ -141,6 +142,7 @@ function mapEnrollment(enrollment: {
     sectionId: enrollment.sectionId,
     semesterId: enrollment.semesterId,
     status: enrollment.status,
+    rejectReason: enrollment.rejectReason ?? undefined,
   };
 }
 
@@ -303,7 +305,11 @@ export async function createEnrollment(data: {
 export async function dropEnrollmentById(enrollmentId: string, studentId: string) {
   return prisma.$transaction(async (tx) => {
     const enrollment = await tx.enrollment.findFirst({
-      where: { id: enrollmentId, studentId, status: { not: "DROPPED" } },
+      where: {
+        id: enrollmentId,
+        studentId,
+        status: { in: ["PENDING", "HOLD", "REJECTED"] },
+      },
     });
 
     if (!enrollment) {
@@ -322,14 +328,15 @@ export async function dropEnrollmentById(enrollmentId: string, studentId: string
   });
 }
 
-export async function confirmPendingEnrollments(studentId: string, semesterId: string) {
+// دانش‌آموز سبد خود را نهایی می‌کند؛ وضعیت به HOLD می‌رود و منتظر تایید ادمین می‌ماند
+export async function submitPendingEnrollments(studentId: string, semesterId: string) {
   return prisma.enrollment.updateMany({
     where: {
       studentId,
       semesterId,
       status: "PENDING",
     },
-    data: { status: "CONFIRMED" },
+    data: { status: "HOLD" },
   });
 }
 

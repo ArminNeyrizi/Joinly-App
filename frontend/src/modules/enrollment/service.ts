@@ -1,6 +1,5 @@
 import { ENROLLMENT_LIMITS } from "./constants";
 import {
-  confirmPendingEnrollments,
   createEnrollment,
   dropEnrollmentById,
   findActiveSemester,
@@ -12,6 +11,7 @@ import {
   findStudentEnrollments,
   mapSemester,
   mapStudent,
+  submitPendingEnrollments,
   toEnrollmentItems,
 } from "./repository";
 import type {
@@ -48,7 +48,9 @@ function buildSummary(
   enrollments: EnrollmentItem[],
   semester: NonNullable<Awaited<ReturnType<typeof findActiveSemester>>>,
 ): EnrollmentSummary {
-  const totalUnits = enrollments.reduce((sum, item) => sum + item.course.units, 0);
+  const totalUnits = enrollments
+    .filter((item) => item.enrollment.status !== "REJECTED")
+    .reduce((sum, item) => sum + item.course.units, 0);
 
   return {
     totalUnits,
@@ -159,7 +161,11 @@ export async function enrollInSection(
     return { success: false, error: "ALREADY_ENROLLED" };
   }
 
-  if (context.enrollments.some((item) => item.course.id === course.id)) {
+  if (
+    context.enrollments.some(
+      (item) => item.course.id === course.id && item.enrollment.status !== "REJECTED",
+    )
+  ) {
     return { success: false, error: "COURSE_ALREADY_SELECTED" };
   }
 
@@ -178,9 +184,7 @@ export async function enrollInSection(
     return { success: false, error: "PREREQUISITE_NOT_MET" };
   }
 
-  const totalUnits =
-    context.enrollments.reduce((sum, item) => sum + item.course.units, 0) +
-    course.units;
+  const totalUnits = context.summary.totalUnits + course.units;
 
   if (totalUnits > ENROLLMENT_LIMITS.maxUnits) {
     return { success: false, error: "MAX_UNITS_EXCEEDED" };
@@ -237,6 +241,7 @@ export async function dropEnrollment(
   }
 }
 
+// دانش‌آموز سبد خود را نهایی می‌کند: PENDING -> HOLD (منتظر تایید ادمین)
 export async function confirmEnrollments(userId: string): Promise<
   | { success: true }
   | { success: false; error: EnrollmentValidationError }
@@ -255,15 +260,10 @@ export async function confirmEnrollments(userId: string): Promise<
     return { success: false, error: "ENROLLMENT_NOT_FOUND" };
   }
 
-  const pendingUnits = pendingEnrollments.reduce(
-    (sum, item) => sum + item.course.units,
-    0,
-  );
-
-  if (pendingUnits < ENROLLMENT_LIMITS.minUnits) {
+  if (context.summary.totalUnits < ENROLLMENT_LIMITS.minUnits) {
     return { success: false, error: "MIN_UNITS_NOT_MET" };
   }
 
-  await confirmPendingEnrollments(context.student.id, context.semester.id);
+  await submitPendingEnrollments(context.student.id, context.semester.id);
   return { success: true };
 }

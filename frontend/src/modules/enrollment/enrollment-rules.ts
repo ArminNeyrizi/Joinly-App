@@ -37,11 +37,16 @@ export function canEnrollInSection(
   const course = data.courses.find((c) => c.id === section.courseId);
   if (!course) return "SECTION_NOT_FOUND";
 
+  // ثبت‌نام‌های رد شده مانع انتخاب دوباره درس نمی‌شوند
+  const activeEnrollments = data.enrollments.filter(
+    (e) => e.enrollment.status !== "REJECTED",
+  );
+
   if (!data.summary.isEnrollmentOpen) return "ENROLLMENT_CLOSED";
-  if (data.enrollments.some((e) => e.section.id === sectionId)) {
+  if (activeEnrollments.some((e) => e.section.id === sectionId)) {
     return "ALREADY_ENROLLED";
   }
-  if (data.enrollments.some((e) => e.course.id === course.id)) {
+  if (activeEnrollments.some((e) => e.course.id === course.id)) {
     return "COURSE_ALREADY_SELECTED";
   }
   if (section.enrolledCount >= section.capacity) return "SECTION_FULL";
@@ -49,7 +54,7 @@ export function canEnrollInSection(
   const metPrerequisites = course.prerequisiteIds.every(
     (prereqId) =>
       data.completedCourseIds.includes(prereqId) ||
-      data.enrollments.some((e) => e.course.id === prereqId),
+      activeEnrollments.some((e) => e.course.id === prereqId),
   );
   if (!metPrerequisites) return "PREREQUISITE_NOT_MET";
 
@@ -57,7 +62,7 @@ export function canEnrollInSection(
     return "MAX_UNITS_EXCEEDED";
   }
 
-  for (const item of data.enrollments) {
+  for (const item of activeEnrollments) {
     if (hasScheduleConflict(section.schedules, item.section.schedules)) {
       return "SCHEDULE_CONFLICT";
     }

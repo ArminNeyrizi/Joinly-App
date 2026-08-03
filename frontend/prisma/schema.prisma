@@ -8,9 +8,11 @@ datasource db {
 }
 
 enum EnrollmentStatus {
-  PENDING
-  CONFIRMED
-  DROPPED
+  PENDING   // در حال چیدن سبد توسط دانش‌آموز
+  HOLD      // ثبت نهایی شده، منتظر تایید ادمین
+  APPROVED  // تایید شده توسط ادمین
+  REJECTED  // رد شده توسط ادمین
+  DROPPED   // حذف شده توسط دانش‌آموز
 }
 
 enum DayOfWeek {
@@ -21,6 +23,14 @@ enum DayOfWeek {
   WEDNESDAY
   THURSDAY
   FRIDAY
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  name      String?
+  email     String   @unique
+  createdAt DateTime @default(now())
 }
 
 model Academy {
@@ -50,21 +60,21 @@ model LearningPath {
 }
 
 model Course {
-  id             String          @id @default(cuid())
+  id             String            @id @default(cuid())
   code           String
   name           String
   description    String?
   units          Int
   academyId      String
-  academy        Academy         @relation(fields: [academyId], references: [id])
+  academy        Academy           @relation(fields: [academyId], references: [id])
   learningPathId String?
-  learningPath   LearningPath?   @relation(fields: [learningPathId], references: [id])
+  learningPath   LearningPath?     @relation(fields: [learningPathId], references: [id])
   sections       CourseSection[]
-  prerequisites  Prerequisite[]  @relation("CoursePrerequisites")
-  requiredFor    Prerequisite[]  @relation("RequiredCourse")
+  prerequisites  Prerequisite[]    @relation("CoursePrerequisites")
+  requiredFor    Prerequisite[]    @relation("RequiredCourse")
   completions    CompletedCourse[]
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
 
   @@unique([academyId, code])
 }
@@ -80,19 +90,19 @@ model Prerequisite {
 }
 
 model CourseSection {
-  id             String       @id @default(cuid())
-  courseId       String
-  course         Course       @relation(fields: [courseId], references: [id])
-  sectionNumber  String
-  instructor     String
-  capacity       Int
-  enrolledCount  Int          @default(0)
-  semesterId     String
-  semester       Semester     @relation(fields: [semesterId], references: [id])
-  schedules      Schedule[]
-  enrollments    Enrollment[]
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
+  id            String       @id @default(cuid())
+  courseId      String
+  course        Course       @relation(fields: [courseId], references: [id])
+  sectionNumber String
+  instructor    String
+  capacity      Int
+  enrolledCount Int          @default(0)
+  semesterId    String
+  semester      Semester     @relation(fields: [semesterId], references: [id])
+  schedules     Schedule[]
+  enrollments   Enrollment[]
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
 
   @@unique([courseId, sectionNumber, semesterId])
 }
@@ -121,18 +131,18 @@ model Semester {
 }
 
 model Student {
-  id          String       @id @default(cuid())
-  userId      String       @unique
+  id          String            @id @default(cuid())
+  userId      String            @unique
   firstName   String
   lastName    String
-  email       String       @unique
+  email       String            @unique
   academyId   String
-  academy     Academy          @relation(fields: [academyId], references: [id])
+  academy     Academy           @relation(fields: [academyId], references: [id])
   enrollments Enrollment[]
   completions CompletedCourse[]
-  todos       Todo[]           
-  createdAt   DateTime     @default(now())
-  updatedAt   DateTime     @updatedAt
+  todos       Todo[]
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
 }
 
 model Enrollment {
@@ -144,8 +154,14 @@ model Enrollment {
   semesterId String
   semester   Semester         @relation(fields: [semesterId], references: [id])
   status     EnrollmentStatus @default(PENDING)
-  createdAt  DateTime         @default(now())
-  updatedAt  DateTime         @updatedAt
+
+  // بررسی ادمین
+  reviewedByUserId String?
+  reviewedAt       DateTime?
+  rejectReason     String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@unique([studentId, sectionId, semesterId])
 }
@@ -162,19 +178,18 @@ model CompletedCourse {
 }
 
 model Todo {
-  id          String   @id @default(cuid())
+  id          String    @id @default(cuid())
   title       String
   description String?
-  completed   Boolean  @default(false)
-  priority    Int      @default(2) // 1=Low, 2=Medium, 3=High, 4=Urgent
+  completed   Boolean   @default(false)
+  priority    Int       @default(2) // 1=Low, 2=Medium, 3=High, 4=Urgent
   dueDate     DateTime?
-  studentId   String   @map("student_id") // Changed from userId to match your schema
-  
-  // Relation to Student
-  student     Student  @relation(fields: [studentId], references: [id], onDelete: Cascade)
-  
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
-  
+  studentId   String    @map("student_id")
+
+  student Student @relation(fields: [studentId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
   @@map("todos")
 }

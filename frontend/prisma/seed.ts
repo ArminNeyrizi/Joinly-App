@@ -477,7 +477,7 @@ async function main() {
           studentId: student.id,
           sectionId: linux201Section.id,
           semesterId: semester.id,
-          status: "CONFIRMED",
+          status: "APPROVED",
         },
       });
     }

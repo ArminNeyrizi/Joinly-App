@@ -1,13 +1,13 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 7/17/2026, 10:33:39 PM*
+*Generated on: 7/19/2026, 9:00:57 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
-| 📄 Total Files | 108 |
-| 📁 Total Folders | 38 |
+| 📄 Total Files | 120 |
+| 📁 Total Folders | 42 |
 | 🌳 Max Depth | 4 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
@@ -25,40 +25,40 @@
 
 ### By File Type
 
-- 🔷 **.ts** (TypeScript files): 64 files (59.3%)
-- ⚛️ **.tsx** (React TypeScript files): 17 files (15.7%)
-- 🔤 **.ttf** (TrueType fonts): 9 files (8.3%)
-- ⚙️ **.json** (JSON files): 4 files (3.7%)
-- 📖 **.md** (Markdown files): 2 files (1.9%)
-- 📄 **.mjs** (Other files): 2 files (1.9%)
-- 📄 **.sql** (Other files): 2 files (1.9%)
-- 📄 **.example** (Other files): 1 files (0.9%)
-- 📄 **.** (Other files): 1 files (0.9%)
-- 🚫 **.gitignore** (Git ignore): 1 files (0.9%)
-- ⚙️ **.toml** (TOML files): 1 files (0.9%)
-- 📄 **.prisma** (Other files): 1 files (0.9%)
-- 🖼️ **.jpg** (JPEG images): 1 files (0.9%)
-- 🖼️ **.ico** (Icon files): 1 files (0.9%)
-- 🎨 **.css** (Stylesheets): 1 files (0.9%)
+- 🔷 **.ts** (TypeScript files): 71 files (59.2%)
+- ⚛️ **.tsx** (React TypeScript files): 21 files (17.5%)
+- 🔤 **.ttf** (TrueType fonts): 9 files (7.5%)
+- ⚙️ **.json** (JSON files): 4 files (3.3%)
+- 📄 **.sql** (Other files): 3 files (2.5%)
+- 📖 **.md** (Markdown files): 2 files (1.7%)
+- 📄 **.mjs** (Other files): 2 files (1.7%)
+- 📄 **.example** (Other files): 1 files (0.8%)
+- 📄 **.** (Other files): 1 files (0.8%)
+- 🚫 **.gitignore** (Git ignore): 1 files (0.8%)
+- ⚙️ **.toml** (TOML files): 1 files (0.8%)
+- 📄 **.prisma** (Other files): 1 files (0.8%)
+- 🖼️ **.jpg** (JPEG images): 1 files (0.8%)
+- 🖼️ **.ico** (Icon files): 1 files (0.8%)
+- 🎨 **.css** (Stylesheets): 1 files (0.8%)
 
 ### By Category
 
-- **TypeScript**: 64 files (59.3%)
-- **React**: 17 files (15.7%)
-- **Assets**: 11 files (10.2%)
-- **Other**: 7 files (6.5%)
-- **Config**: 5 files (4.6%)
-- **Docs**: 2 files (1.9%)
-- **DevOps**: 1 files (0.9%)
-- **Styles**: 1 files (0.9%)
+- **TypeScript**: 71 files (59.2%)
+- **React**: 21 files (17.5%)
+- **Assets**: 11 files (9.2%)
+- **Other**: 8 files (6.7%)
+- **Config**: 5 files (4.2%)
+- **Docs**: 2 files (1.7%)
+- **DevOps**: 1 files (0.8%)
+- **Styles**: 1 files (0.8%)
 
 ### 📁 Largest Directories
 
-- **root**: 108 files
-- **src**: 87 files
-- **src/modules**: 34 files
-- **src/generated/prisma**: 18 files
-- **src/generated**: 18 files
+- **root**: 120 files
+- **src**: 98 files
+- **src/modules**: 42 files
+- **src/generated/prisma**: 20 files
+- **src/generated**: 20 files
 
 ## 🌳 Directory Structure
 
@@ -81,6 +81,8 @@ joinly-app/
 │   │   │   └── 📄 migration.sql
 │   │   ├── 📂 20260707192358_add_todos/
 │   │   │   └── 📄 migration.sql
+│   │   ├── 📂 20260719164217_add_enrollment_hold_and_admin/
+│   │   │   └── 📄 migration.sql
 │   │   └── ⚙️ migration_lock.toml
 │   ├── 📄 schema.prisma
 │   └── 🔷 seed.ts
@@ -91,6 +93,8 @@ joinly-app/
 ├── 🔴 📖 **README.md**
 ├── 📁 src/
 │   ├── 🚀 app/
+│   │   ├── 📂 admin/
+│   │   │   └── ⚛️ page.tsx
 │   │   ├── 📂 auth/
 │   │   │   ├── 📂 login/
 │   │   │   │   └── ⚛️ page.tsx
@@ -145,6 +149,7 @@ joinly-app/
 │   │   │   │   └── 🔷 prismaNamespaceBrowser.ts
 │   │   │   ├── 📂 models/
 │   │   │   │   ├── 🔷 Academy.ts
+│   │   │   │   ├── 🔷 Admin.ts
 │   │   │   │   ├── 🔷 CompletedCourse.ts
 │   │   │   │   ├── 🔷 Course.ts
 │   │   │   │   ├── 🔷 CourseSection.ts
@@ -153,7 +158,8 @@ joinly-app/
 │   │   │   │   ├── 🔷 Prerequisite.ts
 │   │   │   │   ├── 🔷 Schedule.ts
 │   │   │   │   ├── 🔷 Semester.ts
-│   │   │   │   └── 🔷 Student.ts
+│   │   │   │   ├── 🔷 Student.ts
+│   │   │   │   └── 🔷 Todo.ts
 │   │   │   └── 🔷 models.ts
 │   ├── 🎣 hooks/
 │   ├── 📚 lib/
@@ -170,6 +176,16 @@ joinly-app/
 │   │   │   ├── 🔷 repository.ts
 │   │   │   ├── 🔷 service.ts
 │   │   │   └── 🔷 types.ts
+│   │   ├── 📂 admin/
+│   │   │   ├── 🔷 actions.ts
+│   │   │   ├── 🧩 components/
+│   │   │   │   ├── ⚛️ admin-dashboard.tsx
+│   │   │   │   ├── ⚛️ course-manager.tsx
+│   │   │   │   └── ⚛️ enrollment-review-list.tsx
+│   │   │   ├── 🔷 repository.ts
+│   │   │   ├── 🔷 service.ts
+│   │   │   ├── 🔷 types.ts
+│   │   │   └── 🔷 validation.ts
 │   │   ├── 📂 auth/
 │   │   │   ├── 🔷 actions.ts
 │   │   │   ├── 🧩 components/
