@@ -1,124 +1,189 @@
-import type { Metadata } from "next";
 import Link from "next/link";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "آمار و احتمال مهندسی | آموزش کامل با مثال و تمرین",
+  title: "آمار و احتمال مهندسی | آموزش کامل احتمال و آمار | Joinly",
   description:
-    "آموزش آمار و احتمال مهندسی از پایه تا پیشرفته؛ شامل احتمال، متغیر تصادفی، توزیع‌های احتمال، امید ریاضی، واریانس، توزیع نرمال، برآورد و آزمون فرض با مثال و تمرین.",
-  keywords: [
-    "آمار و احتمال مهندسی",
-    "آمار مهندسی",
-    "احتمال مهندسی",
-    "آموزش آمار و احتمال",
-    "توزیع نرمال",
-    "متغیر تصادفی",
-  ],
+    "دوره جامع آمار و احتمال مهندسی؛ از آنالیز ترکیبی و اصول احتمال تا متغیرهای تصادفی، توزیع‌های احتمال، قضایای حدی و شبیه‌سازی.",
 };
 
 const chapters = [
   {
-    number: "01",
-    title: "مبانی احتمال",
+    number: 1,
+    title: "آنالیز ترکیبی",
+    english: "Combinatorial Analysis",
     description:
-      "فضای نمونه، پیشامدها، قوانین احتمال و روش حل مسائل پایه.",
-    lessons: 5,
-    duration: "۱ ساعت و ۴۰ دقیقه",
+      "شمارش، جایگشت، ترکیب و روش‌های شمارش که پایه حل بسیاری از مسائل احتمال هستند.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["اصل اساسی شمارش", "basic-counting-principle"],
+      ["جایگشت‌ها", "permutations"],
+      ["ترکیب‌ها", "combinations"],
+      ["ضرایب چندجمله‌ای", "multinomial-coefficients"],
+      ["تعداد جواب‌های صحیح معادلات", "integer-solutions"],
+    ],
   },
   {
-    number: "02",
+    number: 2,
+    title: "اصول احتمال",
+    english: "Axioms of Probability",
+    description:
+      "فضای نمونه، پیشامدها، اصول موضوعه احتمال و روش محاسبه احتمال در فضاهای مختلف.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["فضای نمونه و پیشامدها", "sample-space-and-events"],
+      ["اصول موضوعه احتمال", "probability-axioms"],
+      ["قضایای پایه احتمال", "basic-propositions"],
+      ["خروجی‌های هم‌احتمال", "equally-likely-outcomes"],
+      ["احتمال به‌عنوان معیار باور", "probability-as-belief"],
+    ],
+  },
+  {
+    number: 3,
     title: "احتمال شرطی و استقلال",
+    english: "Conditional Probability and Independence",
     description:
-      "احتمال شرطی، استقلال پیشامدها و حل مسائل چندمرحله‌ای.",
-    lessons: 4,
-    duration: "۱ ساعت و ۲۰ دقیقه",
+      "احتمال شرطی، قضیه بیز، استقلال پیشامدها و روش‌های حل مسائل وابسته به اطلاعات قبلی.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["احتمال شرطی", "conditional-probability"],
+      ["فرمول بیز", "bayes-formula"],
+      ["پیشامدهای مستقل", "independent-events"],
+      ["احتمال شرطی", "conditional-probability-as-probability"],
+    ],
   },
   {
-    number: "03",
-    title: "قضیه بیز",
-    description:
-      "قضیه بیز، احتمال کل و کاربرد آن در مسائل مهندسی.",
-    lessons: 4,
-    duration: "۱ ساعت و ۱۵ دقیقه",
-  },
-  {
-    number: "04",
+    number: 4,
     title: "متغیرهای تصادفی",
+    english: "Random Variables",
     description:
-      "متغیر تصادفی گسسته و پیوسته، تابع جرم و تابع چگالی احتمال.",
-    lessons: 5,
-    duration: "۲ ساعت",
+      "متغیرهای تصادفی گسسته، امید ریاضی، واریانس و توزیع‌های مهم احتمال.",
+    lessons: [
+      ["متغیر تصادفی", "random-variables"],
+      ["متغیرهای تصادفی گسسته", "discrete-random-variables"],
+      ["امید ریاضی", "expected-value"],
+      ["امید تابعی از متغیر تصادفی", "expectation-of-functions"],
+      ["واریانس", "variance"],
+      ["توزیع برنولی و دوجمله‌ای", "binomial"],
+      ["توزیع پواسون", "poisson"],
+      ["توزیع هندسی", "geometric"],
+      ["توزیع دوجمله‌ای منفی", "negative-binomial"],
+      ["توزیع فوق‌هندسی", "hypergeometric"],
+      ["تابع توزیع تجمعی", "cdf"],
+    ],
   },
   {
-    number: "05",
-    title: "امید ریاضی و واریانس",
+    number: 5,
+    title: "متغیرهای تصادفی پیوسته",
+    english: "Continuous Random Variables",
     description:
-      "امید، واریانس، انحراف معیار و خواص آن‌ها در مسائل مهندسی.",
-    lessons: 4,
-    duration: "۱ ساعت و ۳۰ دقیقه",
+      "توزیع‌های پیوسته، نرمال، یکنواخت، نمایی و توزیع‌های مهم دیگر.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["امید و واریانس", "expectation-and-variance"],
+      ["توزیع یکنواخت", "uniform"],
+      ["توزیع نرمال", "normal"],
+      ["تقریب نرمال توزیع دوجمله‌ای", "normal-approximation"],
+      ["توزیع نمایی", "exponential"],
+      ["تابع نرخ خطر", "hazard-rate"],
+      ["توزیع گاما", "gamma"],
+      ["توزیع ویبول", "weibull"],
+      ["توزیع بتا", "beta"],
+      ["تابعی از متغیر تصادفی", "function-of-random-variable"],
+    ],
   },
   {
-    number: "06",
-    title: "توزیع‌های احتمال",
+    number: 6,
+    title: "متغیرهای تصادفی مشترک",
+    english: "Jointly Distributed Random Variables",
     description:
-      "برنولی، دوجمله‌ای، هندسی، پواسون و توزیع‌های مهم دیگر.",
-    lessons: 6,
-    duration: "۲ ساعت و ۳۰ دقیقه",
+      "توزیع مشترک، استقلال، توزیع شرطی و مجموع متغیرهای تصادفی.",
+    lessons: [
+      ["توزیع مشترک", "joint-distributions"],
+      ["متغیرهای تصادفی مستقل", "independent-random-variables"],
+      ["مجموع متغیرهای مستقل", "sums-of-independent"],
+      ["توزیع شرطی گسسته", "conditional-discrete"],
+      ["توزیع شرطی پیوسته", "conditional-continuous"],
+      ["آمار ترتیبی", "order-statistics"],
+      ["توابع متغیرهای تصادفی", "functions-of-random-variables"],
+      ["متغیرهای Exchangeable", "exchangeable"],
+    ],
   },
   {
-    number: "07",
-    title: "توزیع نرمال",
+    number: 7,
+    title: "خواص امید ریاضی",
+    english: "Properties of Expectation",
     description:
-      "توزیع نرمال استاندارد، تبدیل Z و حل مسائل کاربردی.",
-    lessons: 4,
-    duration: "۱ ساعت و ۴۵ دقیقه",
+      "کوواریانس، همبستگی، امید شرطی، پیش‌بینی و تابع مولد گشتاور.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["امید مجموع متغیرهای تصادفی", "expectation-of-sums"],
+      ["گشتاور تعداد پیشامدها", "moments-of-events"],
+      ["کوواریانس و همبستگی", "covariance-and-correlation"],
+      ["امید شرطی", "conditional-expectation"],
+      ["امید شرطی و پیش‌بینی", "prediction"],
+      ["تابع مولد گشتاور", "moment-generating-function"],
+      ["توزیع نرمال چندمتغیره", "multivariate-normal"],
+      ["تعریف عمومی امید", "general-expectation"],
+    ],
   },
   {
-    number: "08",
-    title: "متغیرهای تصادفی چندبعدی",
-    description:
-      "توزیع مشترک، حاشیه‌ای، شرطی و کوواریانس.",
-    lessons: 3,
-    duration: "۱ ساعت و ۳۰ دقیقه",
-  },
-  {
-    number: "09",
+    number: 8,
     title: "قضایای حدی",
+    english: "Limit Theorems",
     description:
-      "قانون اعداد بزرگ و قضیه حد مرکزی با مثال‌های مهندسی.",
-    lessons: 3,
-    duration: "۱ ساعت و ۱۵ دقیقه",
+      "نامساوی چبیشف، قانون اعداد بزرگ و قضیه حد مرکزی.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["نامساوی چبیشف", "chebyshev"],
+      ["قانون ضعیف اعداد بزرگ", "weak-law"],
+      ["قضیه حد مرکزی", "central-limit-theorem"],
+      ["قانون قوی اعداد بزرگ", "strong-law"],
+      ["سایر نامساوی‌ها", "other-inequalities"],
+    ],
   },
   {
-    number: "10",
-    title: "نمونه‌گیری و توزیع نمونه‌ای",
+    number: 9,
+    title: "مباحث تکمیلی احتمال",
+    english: "Additional Topics in Probability",
     description:
-      "نمونه، جامعه، میانگین نمونه‌ای و توزیع‌های نمونه‌ای.",
-    lessons: 3,
-    duration: "۱ ساعت و ۲۰ دقیقه",
+      "فرآیند پواسون، زنجیره‌های مارکوف، آنتروپی و نظریه اطلاعات.",
+    lessons: [
+      ["فرآیند پواسون", "poisson-process"],
+      ["زنجیره‌های مارکوف", "markov-chains"],
+      ["عدم قطعیت و آنتروپی", "entropy"],
+      ["نظریه کدگذاری و آنتروپی", "coding-theory"],
+    ],
   },
   {
-    number: "11",
-    title: "برآورد",
+    number: 10,
+    title: "شبیه‌سازی",
+    english: "Simulation",
     description:
-      "برآورد نقطه‌ای، فاصله اطمینان و روش‌های تخمین پارامتر.",
-    lessons: 4,
-    duration: "۱ ساعت و ۴۵ دقیقه",
-  },
-  {
-    number: "12",
-    title: "آزمون فرض",
-    description:
-      "فرض صفر، فرض مقابل، خطاهای نوع اول و دوم و آزمون‌های آماری.",
-    lessons: 5,
-    duration: "۲ ساعت",
+      "تولید متغیرهای تصادفی، شبیه‌سازی توزیع‌ها و تکنیک‌های کاهش واریانس.",
+    lessons: [
+      ["مقدمه", "introduction"],
+      ["شبیه‌سازی متغیرهای پیوسته", "continuous-simulation"],
+      ["روش تبدیل معکوس", "inverse-transformation"],
+      ["روش رد کردن", "rejection-method"],
+      ["شبیه‌سازی توزیع‌های گسسته", "discrete-simulation"],
+      ["کاهش واریانس", "variance-reduction"],
+      ["متغیرهای متضاد", "antithetic-variables"],
+      ["متغیرهای کنترلی", "control-variates"],
+    ],
   },
 ];
+
+const totalLessons = chapters.reduce(
+  (total, chapter) => total + chapter.lessons.length,
+  0
+);
 
 function ArrowLeft() {
   return (
     <svg
-      width="17"
-      height="17"
+      width="18"
+      height="18"
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -130,78 +195,11 @@ function ArrowLeft() {
   );
 }
 
-function BookIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-    >
-      <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z" />
-      <path d="M4 5.5V22" />
-    </svg>
-  );
-}
-
-function ClockIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
-function CheckIcon() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-    >
-      <path d="m5 12 4 4L19 6" />
-    </svg>
-  );
-}
-
-function ChevronDown() {
-  return (
-    <svg
-      width="18"
-      height="18"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.7"
-    >
-      <path d="m6 9 6 6 6-6" />
-    </svg>
-  );
-}
-
-export default function StatisticsProbabilityPage() {
-  const totalLessons = chapters.reduce(
-    (sum, chapter) => sum + chapter.lessons,
-    0,
-  );
-
+export default function ProbabilityCoursePage() {
   return (
     <main dir="rtl" className="min-h-screen bg-white text-neutral-950">
       {/* Header */}
-      <header className="border-b border-neutral-100 bg-white">
+      <header className="sticky top-0 z-50 border-b border-neutral-100 bg-white/90 backdrop-blur-xl">
         <div className="mx-auto flex h-[74px] max-w-[1280px] items-center justify-between px-6 lg:px-8">
           <Link
             href="/"
@@ -213,28 +211,28 @@ export default function StatisticsProbabilityPage() {
           <nav className="hidden items-center gap-10 lg:flex">
             <Link
               href="/learn"
-              className="font-medium text-black"
+              className="text-sm font-medium text-black"
             >
               یادگیری
             </Link>
 
             <Link
               href="/articles"
-              className="text-sm text-neutral-600 hover:text-black"
+              className="text-sm text-neutral-500 hover:text-black"
             >
               مقالات
             </Link>
 
             <Link
               href="/projects"
-              className="text-sm text-neutral-600 hover:text-black"
+              className="text-sm text-neutral-500 hover:text-black"
             >
               پروژه‌ها
             </Link>
 
             <Link
               href="/about"
-              className="text-sm text-neutral-600 hover:text-black"
+              className="text-sm text-neutral-500 hover:text-black"
             >
               درباره ما
             </Link>
@@ -242,260 +240,91 @@ export default function StatisticsProbabilityPage() {
 
           <Link
             href="/login"
-            className="rounded-lg bg-black px-5 py-3 text-xs font-medium !text-white hover:bg-neutral-800"
+            className="rounded-lg bg-black px-5 py-3 text-xs font-medium !text-white transition hover:bg-neutral-800"
           >
             ورود / ثبت‌نام
           </Link>
         </div>
       </header>
 
-      {/* Breadcrumb */}
-      <div className="border-b border-neutral-100">
-        <div className="mx-auto flex max-w-[1280px] items-center gap-2 px-6 py-4 text-xs text-neutral-400 lg:px-8">
-          <Link href="/" className="hover:text-black">
-            خانه
-          </Link>
-
-          <span>/</span>
-
-          <Link href="/learn" className="hover:text-black">
-            یادگیری
-          </Link>
-
-          <span>/</span>
-
-          <span className="text-neutral-700">
-            آمار و احتمال مهندسی
-          </span>
-        </div>
-      </div>
-
       {/* Hero */}
-      <section className="border-b border-neutral-100 bg-neutral-50/70">
-        <div className="mx-auto max-w-[1280px] px-6 py-14 lg:px-8 lg:py-20">
-          <div className="grid gap-12 lg:grid-cols-[1fr_360px]">
-            <div>
-              <div className="mb-6 inline-flex rounded-full border border-orange-200 bg-orange-50 px-4 py-2 text-xs font-medium text-orange-700">
-                مسیر یادگیری · ریاضی
-              </div>
+      <section className="border-b border-neutral-100">
+        <div className="mx-auto max-w-[1100px] px-6 pb-20 pt-16 lg:pt-24">
+          <div className="max-w-[780px]">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neutral-200 px-4 py-2 text-xs text-neutral-500">
+              <span className="h-1.5 w-1.5 rounded-full bg-orange-500" />
+              مسیر یادگیری Joinly
+            </div>
 
-              <h1 className="max-w-[780px] text-4xl font-black leading-[1.35] tracking-tight sm:text-5xl">
-                آمار و احتمال مهندسی
-              </h1>
+            <h1 className="text-4xl font-black leading-[1.35] tracking-[-1px] sm:text-5xl lg:text-6xl">
+              آمار و احتمال مهندسی
+            </h1>
 
-              <p className="mt-6 max-w-[720px] text-[16px] leading-8 text-neutral-500">
-                آمار و احتمال را از مفاهیم پایه شروع می‌کنیم و
-                مرحله‌به‌مرحله به مباحثی می‌رسیم که در مهندسی،
-                علوم داده و تحلیل مسائل واقعی استفاده می‌شوند.
-              </p>
+            <p className="mt-7 max-w-[700px] text-base leading-9 text-neutral-500 sm:text-lg">
+              از شمارش و اصول احتمال شروع می‌کنیم و قدم‌به‌قدم به
+              متغیرهای تصادفی، توزیع‌های احتمال، قضیه حد مرکزی و
+              شبیه‌سازی می‌رسیم.
+            </p>
 
-              <div className="mt-8 flex flex-wrap gap-6 text-sm text-neutral-500">
-                <span className="flex items-center gap-2">
-                  <BookIcon />
-                  {totalLessons} درس
-                </span>
+            <p className="mt-5 max-w-[700px] text-sm leading-8 text-neutral-400">
+              این دوره بر اساس ساختار کتاب
+              <span className="mx-1 font-medium text-neutral-600">
+                A First Course in Probability
+              </span>
+              طراحی شده و مثال‌ها و تمرین‌های آن با تمرکز روی مسائل
+              مهندسی و کاربردهای محاسباتی ارائه می‌شوند.
+            </p>
+          </div>
 
-                <span className="flex items-center gap-2">
-                  <ClockIcon />
-                  حدود ۱۹ ساعت
-                </span>
-
-                <span>
-                  سطح: <strong className="text-neutral-800">مقدماتی تا پیشرفته</strong>
-                </span>
-              </div>
-
-              <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-                <Link
-                  href="#chapters"
-                  className="flex h-13 items-center justify-center gap-3 rounded-lg bg-black px-7 text-sm font-medium !text-white transition hover:bg-neutral-800"
-                >
-                  شروع یادگیری
-                  <ArrowLeft />
-                </Link>
-
-                <Link
-                  href="/learn"
-                  className="flex h-13 items-center justify-center rounded-lg border border-neutral-200 bg-white px-7 text-sm font-medium hover:bg-neutral-50"
-                >
-                  بازگشت به مسیرها
-                </Link>
+          {/* Stats */}
+          <div className="mt-12 grid grid-cols-2 overflow-hidden rounded-2xl border border-neutral-200 sm:grid-cols-4">
+            <div className="border-b border-neutral-200 p-6 sm:border-b-0 sm:border-l">
+              <div className="text-3xl font-black">۱۰</div>
+              <div className="mt-2 text-xs text-neutral-400">
+                فصل
               </div>
             </div>
 
-            {/* Course visual */}
-            <div className="relative hidden h-[300px] overflow-hidden rounded-3xl border border-neutral-200 bg-white lg:block">
-              <div className="absolute left-10 top-10 h-40 w-40 rounded-full bg-neutral-100 blur-3xl" />
-
-              <div className="absolute right-10 top-12 h-40 w-40 rounded-2xl border border-neutral-200 bg-white shadow-xl">
-                <div className="absolute left-6 right-6 top-7 h-2 rounded-full bg-neutral-100" />
-
-                <svg
-                  viewBox="0 0 150 100"
-                  className="absolute bottom-6 left-5 right-5 h-24 w-[calc(100%-40px)]"
-                  fill="none"
-                >
-                  <path
-                    d="M4 85 C25 82 35 20 68 20 C100 20 102 82 145 60"
-                    stroke="black"
-                    strokeWidth="2.5"
-                  />
-
-                  <circle cx="68" cy="20" r="4" fill="black" />
-                  <circle cx="102" cy="80" r="4" fill="black" />
-                </svg>
+            <div className="border-b border-neutral-200 p-6 sm:border-b-0 sm:border-l">
+              <div className="text-3xl font-black">{totalLessons}+</div>
+              <div className="mt-2 text-xs text-neutral-400">
+                درس
               </div>
+            </div>
 
-              <div className="absolute bottom-8 left-8 flex h-24 w-24 items-center justify-center rounded-2xl bg-black text-3xl font-bold text-white shadow-2xl">
-                σ
+            <div className="border-b border-neutral-200 p-6 sm:border-b-0 sm:border-l">
+              <div className="text-3xl font-black">۳</div>
+              <div className="mt-2 text-xs text-neutral-400">
+                سطح یادگیری
               </div>
+            </div>
 
-              <div className="absolute bottom-8 right-9 text-xs text-neutral-400">
-                Probability
+            <div className="p-6">
+              <div className="text-3xl font-black">∞</div>
+              <div className="mt-2 text-xs text-neutral-400">
+                تمرین و مثال
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Main */}
-      <section
-        id="chapters"
-        className="mx-auto max-w-[1280px] px-6 py-14 lg:px-8"
-      >
-        <div className="grid gap-12 lg:grid-cols-[1fr_300px]">
-          {/* Chapters */}
-          <div>
-            <div className="mb-8">
-              <h2 className="text-2xl font-bold">
-                سرفصل‌های دوره
-              </h2>
-
-              <p className="mt-2 text-sm text-neutral-500">
-                مباحث به ترتیب از ساده به پیچیده مرتب شده‌اند.
-              </p>
-            </div>
-
-            <div className="overflow-hidden rounded-2xl border border-neutral-200">
-              {chapters.map((chapter, index) => (
-                <div
-                  key={chapter.number}
-                  className={`group p-5 transition hover:bg-neutral-50 sm:p-6 ${
-                    index !== chapters.length - 1
-                      ? "border-b border-neutral-100"
-                      : ""
-                  }`}
-                >
-                  <div className="flex gap-5">
-                    <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-xs font-bold text-neutral-500">
-                      {chapter.number}
-                    </div>
-
-                    <div className="min-w-0 flex-1">
-                      <div className="flex flex-col justify-between gap-2 sm:flex-row">
-                        <h3 className="font-bold">
-                          {chapter.title}
-                        </h3>
-
-                        <span className="text-xs text-neutral-400">
-                          {chapter.lessons} درس
-                        </span>
-                      </div>
-
-                      <p className="mt-2 max-w-[650px] text-sm leading-7 text-neutral-500">
-                        {chapter.description}
-                      </p>
-
-                      <div className="mt-3 text-xs text-neutral-400">
-                        {chapter.duration}
-                      </div>
-                    </div>
-
-                    <div className="hidden items-center sm:flex">
-                      <ChevronDown />
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Sidebar */}
-          <aside>
-            <div className="sticky top-6 rounded-2xl border border-neutral-200 bg-white p-6">
-              <h3 className="font-bold">
-                در این مسیر چه یاد می‌گیری؟
-              </h3>
-
-              <div className="mt-6 space-y-4">
-                {[
-                  "حل مسائل احتمال",
-                  "کار با متغیرهای تصادفی",
-                  "شناخت توزیع‌های احتمال",
-                  "تحلیل داده‌های آماری",
-                  "برآورد پارامترها",
-                  "آزمون فرض آماری",
-                ].map((item) => (
-                  <div
-                    key={item}
-                    className="flex items-center gap-3 text-sm text-neutral-600"
-                  >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-neutral-100">
-                      <CheckIcon />
-                    </span>
-
-                    {item}
-                  </div>
-                ))}
-              </div>
-
-              <div className="my-6 border-t border-neutral-100" />
-
-              <div className="space-y-3 text-xs text-neutral-400">
-                <div className="flex justify-between">
-                  <span>تعداد فصل‌ها</span>
-                  <span className="font-medium text-neutral-700">
-                    {chapters.length}
-                  </span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>تعداد درس‌ها</span>
-                  <span className="font-medium text-neutral-700">
-                    {totalLessons}
-                  </span>
-                </div>
-
-                <div className="flex justify-between">
-                  <span>سطح</span>
-                  <span className="font-medium text-neutral-700">
-                    مقدماتی تا پیشرفته
-                  </span>
-                </div>
-              </div>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      {/* Learning philosophy */}
-      <section className="border-t border-neutral-100 bg-neutral-50">
-        <div className="mx-auto max-w-[1280px] px-6 py-16 lg:px-8">
-          <div className="max-w-[720px]">
-            <span className="text-sm font-medium text-orange-600">
-              روش یادگیری Joinly
+      {/* Learning Method */}
+      <section className="border-b border-neutral-100 bg-neutral-50/60">
+        <div className="mx-auto max-w-[1100px] px-6 py-16">
+          <div className="max-w-[650px]">
+            <span className="text-xs font-medium text-orange-600">
+              روش یادگیری
             </span>
 
-            <h2 className="mt-4 text-3xl font-bold leading-[1.5]">
-              فقط فرمول حفظ نمی‌کنیم.
-              <br />
-              مسئله را می‌فهمیم و حل می‌کنیم.
+            <h2 className="mt-4 text-3xl font-black">
+              فقط فرمول حفظ نمی‌کنیم
             </h2>
 
             <p className="mt-5 text-sm leading-8 text-neutral-500">
-              هر مفهوم با توضیح ساده شروع می‌شود، بعد یک مثال
-              حل‌شده می‌بینیم و در نهایت با چند تمرین بررسی
-              می‌کنیم که آیا واقعاً موضوع را فهمیده‌ایم یا نه.
+              هر مفهوم ابتدا با یک مسئله شروع می‌شود، بعد ایده
+              ریاضی آن را می‌بینیم و در نهایت با مثال و تمرین آن را
+              به کار می‌بریم.
             </p>
           </div>
 
@@ -503,25 +332,25 @@ export default function StatisticsProbabilityPage() {
             {[
               {
                 number: "01",
-                title: "مفهوم",
-                text: "اول می‌فهمیم موضوع دقیقاً چیست و چرا به آن نیاز داریم.",
+                title: "فهم مفهوم",
+                text: "اول می‌فهمیم مسئله چیست و چرا به این مفهوم نیاز داریم.",
               },
               {
                 number: "02",
-                title: "مثال",
-                text: "یک مسئله واقعی را مرحله‌به‌مرحله حل می‌کنیم.",
+                title: "ریاضی",
+                text: "تعریف، فرمول و روابط ریاضی را دقیق می‌کنیم.",
               },
               {
                 number: "03",
-                title: "تمرین",
-                text: "خودت مسئله را حل می‌کنی تا یادگیری تثبیت شود.",
+                title: "حل مسئله",
+                text: "با مثال مهندسی و تمرین، مفهوم را به کار می‌بریم.",
               },
             ].map((item) => (
               <div
                 key={item.number}
-                className="rounded-2xl border border-neutral-200 bg-white p-6"
+                className="rounded-2xl border border-neutral-200 bg-white p-7"
               >
-                <span className="text-xs font-bold text-neutral-300">
+                <span className="text-xs text-neutral-300">
                   {item.number}
                 </span>
 
@@ -538,9 +367,121 @@ export default function StatisticsProbabilityPage() {
         </div>
       </section>
 
+      {/* Chapters */}
+      <section>
+        <div className="mx-auto max-w-[1100px] px-6 py-20">
+          <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+            <div>
+              <span className="text-xs font-medium text-orange-600">
+                سرفصل دوره
+              </span>
+
+              <h2 className="mt-4 text-3xl font-black">
+                مسیر یادگیری
+              </h2>
+            </div>
+
+            <span className="text-xs text-neutral-400">
+              {chapters.length} فصل · {totalLessons}+ درس
+            </span>
+          </div>
+
+          <div className="mt-10 space-y-4">
+            {chapters.map((chapter) => (
+              <details
+                key={chapter.number}
+                className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white"
+              >
+                <summary className="flex cursor-pointer list-none items-center gap-5 p-6 sm:p-7">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-neutral-100 text-sm font-bold">
+                    {String(chapter.number).padStart(2, "0")}
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <h3 className="font-bold">
+                      {chapter.title}
+                    </h3>
+
+                    <p className="mt-1 hidden text-xs text-neutral-400 sm:block">
+                      {chapter.english}
+                    </p>
+                  </div>
+
+                  <span className="text-xs text-neutral-400">
+                    {chapter.lessons.length} درس
+                  </span>
+
+                  <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-neutral-200 text-neutral-400 transition group-open:rotate-90">
+                    <ArrowLeft />
+                  </span>
+                </summary>
+
+                <div className="border-t border-neutral-100 px-6 pb-6 pt-2 sm:px-7">
+                  <p className="max-w-[720px] py-5 text-sm leading-8 text-neutral-500">
+                    {chapter.description}
+                  </p>
+
+                  <div className="grid gap-2 sm:grid-cols-2">
+                    {chapter.lessons.map(([title, slug], index) => (
+                      <Link
+                        key={slug}
+                        href={`/learn/probability/chapter-${chapter.number}/${slug}`}
+                        className="group/lesson flex items-center gap-4 rounded-xl border border-neutral-100 p-4 transition hover:border-neutral-300 hover:bg-neutral-50"
+                      >
+                        <span className="text-xs text-neutral-300">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+
+                        <span className="flex-1 text-sm text-neutral-700">
+                          {title}
+                        </span>
+
+                        <span className="text-neutral-300 transition group-hover/lesson:translate-x-[-3px] group-hover/lesson:text-black">
+                          ←
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="border-t border-neutral-100 bg-black text-white">
+        <div className="mx-auto max-w-[1100px] px-6 py-20">
+          <div className="max-w-[650px]">
+            <span className="text-xs text-neutral-500">
+              شروع یادگیری
+            </span>
+
+            <h2 className="mt-5 text-3xl font-black leading-[1.5] sm:text-4xl">
+              از فصل اول شروع کن؛
+              <br />
+              قدم‌به‌قدم جلو برو.
+            </h2>
+
+            <p className="mt-5 text-sm leading-8 text-neutral-400">
+              لازم نیست کل احتمال را یک‌جا یاد بگیری. هر فصل روی
+              مفاهیم فصل‌های قبلی ساخته می‌شود.
+            </p>
+
+            <Link
+              href="/learn/probability/chapter-1/introduction"
+              className="mt-8 inline-flex items-center gap-3 rounded-xl bg-white px-6 py-4 text-sm font-bold !text-black transition hover:bg-neutral-200"
+            >
+              شروع فصل اول
+              <ArrowLeft />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
-      <footer className="border-t border-neutral-100">
-        <div className="mx-auto flex max-w-[1280px] flex-col gap-5 px-6 py-10 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      <footer className="border-t border-neutral-100 bg-white">
+        <div className="mx-auto flex max-w-[1100px] flex-col gap-5 px-6 py-10 text-sm text-neutral-500 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href="/"
             className="text-xl font-black tracking-tight !text-black"
