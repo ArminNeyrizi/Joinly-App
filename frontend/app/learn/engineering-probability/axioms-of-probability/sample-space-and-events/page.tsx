@@ -4,7 +4,7 @@ import "katex/dist/katex.min.css";
 import { BlockMath, InlineMath } from "react-katex";
 
 export const metadata: Metadata = {
-  title: "فضای نمونه و پیشامدها | آمار و احتمال مهندسی | Joinly",
+  title: "فضای نمونه، پیشامدها | آمار و احتمال مهندسی | Joinly",
   description:
     "آموزش فضای نمونه، پیشامدها، اجتماع، اشتراک، متمم، مجموعه تهی، پیشامدهای ناسازگار و قوانین دمورگان در احتمال.",
 };
