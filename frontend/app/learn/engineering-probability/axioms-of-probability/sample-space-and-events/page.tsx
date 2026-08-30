@@ -21,6 +21,7 @@ function ArrowLeft() {
       fill="none"
       stroke="currentColor"
       strokeWidth="1.8"
+      aria-hidden="true"
     >
       <path d="M5 12h14" />
       <path d="m13 6 6 6-6 6" />
@@ -262,7 +263,7 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <Formula>
-            S = \{\text{تمام نتایج ممکن آزمایش}\}
+            {"S = \\{\\text{تمام نتایج ممکن آزمایش}\\}"}
           </Formula>
         </section>
 
@@ -291,9 +292,7 @@ export default function SampleSpaceAndEventsPage() {
               فضای نمونه را به شکل زیر تعریف کنیم:
             </p>
 
-            <Formula>
-              S = \{g,b\}
-            </Formula>
+            <Formula>{"S = \\{g,b\\}"}</Formula>
 
             <p>
               که در آن
@@ -315,9 +314,7 @@ export default function SampleSpaceAndEventsPage() {
               نتایج ممکن برابر است با:
             </p>
 
-            <Formula>
-              |S| = 7! = 5040
-            </Formula>
+            <Formula>{"|S| = 7! = 5040"}</Formula>
 
             <p>
               برای مثال نتیجه
@@ -336,7 +333,7 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              S = \{(H,H),(H,T),(T,H),(T,T)\}
+              {"S = \\{(H,H),(H,T),(T,H),(T,T)\\}"}
             </Formula>
 
             <p>
@@ -351,16 +348,14 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              S = \{(i,j): i,j \in \{1,2,3,4,5,6\}\}
+              {"S = \\{(i,j): i,j \\in \\{1,2,3,4,5,6\\}\\}"}
             </Formula>
 
             <p>
               در نتیجه تعداد نقاط فضای نمونه برابر است با:
             </p>
 
-            <Formula>
-              |S| = 6 \times 6 = 36
-            </Formula>
+            <Formula>{"|S| = 6 \\times 6 = 36"}</Formula>
           </Example>
 
           <Example number={5} title="طول عمر یک قطعه">
@@ -370,7 +365,7 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              S = \{x \in \mathbb{R}: x \geq 0\}
+              {"S = \\{x \\in \\mathbb{R}: x \\geq 0\\}"}
             </Formula>
 
             <p>
@@ -400,9 +395,7 @@ export default function SampleSpaceAndEventsPage() {
             یا Event می‌نامیم.
           </p>
 
-          <Formula>
-            E \subseteq S
-          </Formula>
+          <Formula>{"E \\subseteq S"}</Formula>
 
           <p className="text-[15px] leading-9 text-neutral-600">
             اگر نتیجه آزمایش در مجموعه
@@ -419,7 +412,7 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              E = \{(H,H),(H,T)\}
+              {"E = \\{(H,H),(H,T)\\}"}
             </Formula>
           </Example>
 
@@ -430,7 +423,7 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              E = \{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}
+              {"E = \\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\}"}
             </Formula>
           </Example>
         </section>
@@ -453,25 +446,25 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2">
-            <Concept title="اجتماع" symbol="E \cup F">
+            <Concept title="اجتماع" symbol="E \\cup F">
               <p>
                 اجتماع دو پیشامد شامل تمام نتایجی است که حداقل در
                 یکی از دو پیشامد قرار دارند.
               </p>
 
               <Formula>
-                E \cup F = \{x : x \in E \text{ or } x \in F\}
+                {"E \\cup F = \\{x : x \\in E \\text{ or } x \\in F\\}"}
               </Formula>
             </Concept>
 
-            <Concept title="اشتراک" symbol="E \cap F">
+            <Concept title="اشتراک" symbol="E \\cap F">
               <p>
                 اشتراک شامل نتایجی است که همزمان در هر دو پیشامد
                 قرار دارند.
               </p>
 
               <Formula>
-                E \cap F = \{x : x \in E \text{ and } x \in F\}
+                {"E \\cap F = \\{x : x \\in E \\text{ and } x \\in F\\}"}
               </Formula>
             </Concept>
 
@@ -484,21 +477,17 @@ export default function SampleSpaceAndEventsPage() {
                 قرار ندارند.
               </p>
 
-              <Formula>
-                E^c = S \setminus E
-              </Formula>
+              <Formula>{"E^c = S \\setminus E"}</Formula>
             </Concept>
 
-            <Concept title="مجموعه تهی" symbol="\varnothing">
+            <Concept title="مجموعه تهی" symbol="\\varnothing">
               <p>
                 مجموعه تهی هیچ نتیجه‌ای ندارد. اگر دو پیشامد هیچ
                 نتیجه مشترکی نداشته باشند، اشتراک آنها مجموعه تهی
                 است.
               </p>
 
-              <Formula>
-                E \cap F = \varnothing
-              </Formula>
+              <Formula>{"E \\cap F = \\varnothing"}</Formula>
             </Concept>
           </div>
         </section>
@@ -537,9 +526,7 @@ export default function SampleSpaceAndEventsPage() {
             یا Mutually Exclusive می‌گوییم.
           </p>
 
-          <Formula>
-            E \cap F = \varnothing
-          </Formula>
+          <Formula>{"E \\cap F = \\varnothing"}</Formula>
 
           <Example number={8} title="جمع ۶ و جمع ۷">
             <p>
@@ -548,20 +535,18 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              E = \{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\}
+              {"E = \\{(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)\\}"}
             </Formula>
 
             <Formula>
-              F = \{(1,5),(2,4),(3,3),(4,2),(5,1)\}
+              {"F = \\{(1,5),(2,4),(3,3),(4,2),(5,1)\\}"}
             </Formula>
 
             <p>
               هیچ زوج مرتبی در هر دو مجموعه وجود ندارد؛ بنابراین:
             </p>
 
-            <Formula>
-              E \cap F = \varnothing
-            </Formula>
+            <Formula>{"E \\cap F = \\varnothing"}</Formula>
           </Example>
         </section>
 
@@ -583,20 +568,16 @@ export default function SampleSpaceAndEventsPage() {
             آنها را در یک اجتماع یا اشتراک قرار دهیم.
           </p>
 
-          <Formula>
-            \bigcup_{i=1}^{n} E_i
-          </Formula>
+          <Formula>{"\\bigcup_{i=1}^{n} E_i"}</Formula>
 
           <p className="text-[15px] leading-9 text-neutral-600">
             این عبارت شامل تمام نتایجی است که حداقل در یکی از
             پیشامدهای
-            <InlineMath math="E_1,\ldots,E_n" />
+            <InlineMath math="E_1,\\ldots,E_n" />
             قرار دارند.
           </p>
 
-          <Formula>
-            \bigcap_{i=1}^{n} E_i
-          </Formula>
+          <Formula>{"\\bigcap_{i=1}^{n} E_i"}</Formula>
 
           <p className="text-[15px] leading-9 text-neutral-600">
             در مقابل، اشتراک شامل نتایجی است که در تمام این
@@ -626,7 +607,7 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <Formula>
-            E^c = \{x \in S : x \notin E\}
+            {"E^c = \\{x \\in S : x \\notin E\\}"}
           </Formula>
 
           <Example number={9} title="متمم جمع ۷">
@@ -639,7 +620,7 @@ export default function SampleSpaceAndEventsPage() {
             </p>
 
             <Formula>
-              E^c = \{(i,j)\in S : i+j \neq 7\}
+              {"E^c = \\{(i,j)\\in S : i+j \\neq 7\\}"}
             </Formula>
           </Example>
 
@@ -650,9 +631,7 @@ export default function SampleSpaceAndEventsPage() {
               نمونه مجموعه تهی است:
             </p>
 
-            <Formula>
-              S^c = \varnothing
-            </Formula>
+            <Formula>{"S^c = \\varnothing"}</Formula>
           </div>
         </section>
 
@@ -680,9 +659,7 @@ export default function SampleSpaceAndEventsPage() {
             است.
           </p>
 
-          <Formula>
-            E \subseteq F
-          </Formula>
+          <Formula>{"E \\subseteq F"}</Formula>
 
           <p className="text-[15px] leading-9 text-neutral-600">
             این رابطه یک تفسیر احتمالی مهم هم دارد: اگر
@@ -693,9 +670,7 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <Formula>
-            E \subseteq F
-            \quad \Longrightarrow \quad
-            E \text{ occurs } \Rightarrow F \text{ occurs}
+            {"E \\subseteq F \\quad \\Longrightarrow \\quad E \\text{ occurs } \\Rightarrow F \\text{ occurs}"}
           </Formula>
 
           <p className="mt-6 text-[15px] leading-9 text-neutral-600">
@@ -703,11 +678,7 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <Formula>
-            E \subseteq F
-            \quad \text{and} \quad
-            F \subseteq E
-            \quad \Longrightarrow \quad
-            E = F
+            {"E \\subseteq F \\quad \\text{and} \\quad F \\subseteq E \\quad \\Longrightarrow \\quad E = F"}
           </Formula>
         </section>
 
@@ -743,11 +714,11 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <div className="mt-8 grid gap-4 sm:grid-cols-3">
-            <Concept title="اجتماع" symbol="E \cup F">
+            <Concept title="اجتماع" symbol="E \\cup F">
               ناحیه‌ای که حداقل به یکی از دو مجموعه تعلق دارد.
             </Concept>
 
-            <Concept title="اشتراک" symbol="E \cap F">
+            <Concept title="اشتراک" symbol="E \\cap F">
               ناحیه مشترک بین دو پیشامد.
             </Concept>
 
@@ -777,38 +748,44 @@ export default function SampleSpaceAndEventsPage() {
 
           <div className="mt-8 space-y-4">
             <div className="rounded-2xl border border-neutral-200 p-6">
-              <h3 className="font-bold">قوانین جابجایی</h3>
+              <h3 className="font-bold">
+                قوانین جابجایی
+              </h3>
 
               <Formula>
-                E \cup F = F \cup E
+                {"E \\cup F = F \\cup E"}
               </Formula>
 
               <Formula>
-                E \cap F = F \cap E
-              </Formula>
-            </div>
-
-            <div className="rounded-2xl border border-neutral-200 p-6">
-              <h3 className="font-bold">قوانین شرکت‌پذیری</h3>
-
-              <Formula>
-                (E \cup F)\cup G = E\cup(F\cup G)
-              </Formula>
-
-              <Formula>
-                (E\cap F)\cap G = E\cap(F\cap G)
+                {"E \\cap F = F \\cap E"}
               </Formula>
             </div>
 
             <div className="rounded-2xl border border-neutral-200 p-6">
-              <h3 className="font-bold">قوانین توزیع‌پذیری</h3>
+              <h3 className="font-bold">
+                قوانین شرکت‌پذیری
+              </h3>
 
               <Formula>
-                (E\cup F)\cap G = (E\cap G)\cup(F\cap G)
+                {"(E \\cup F)\\cup G = E\\cup(F\\cup G)"}
               </Formula>
 
               <Formula>
-                (E\cap F)\cup G = (E\cup G)\cap(F\cup G)
+                {"(E\\cap F)\\cap G = E\\cap(F\\cap G)"}
+              </Formula>
+            </div>
+
+            <div className="rounded-2xl border border-neutral-200 p-6">
+              <h3 className="font-bold">
+                قوانین توزیع‌پذیری
+              </h3>
+
+              <Formula>
+                {"(E\\cup F)\\cap G = (E\\cap G)\\cup(F\\cap G)"}
+              </Formula>
+
+              <Formula>
+                {"(E\\cap F)\\cup G = (E\\cup G)\\cap(F\\cup G)"}
               </Formula>
             </div>
           </div>
@@ -845,15 +822,11 @@ export default function SampleSpaceAndEventsPage() {
           </p>
 
           <Formula>
-            \left(\bigcup_{i=1}^{n}E_i\right)^c
-            =
-            \bigcap_{i=1}^{n}E_i^c
+            {"\\left(\\bigcup_{i=1}^{n}E_i\\right)^c = \\bigcap_{i=1}^{n}E_i^c"}
           </Formula>
 
           <Formula>
-            \left(\bigcap_{i=1}^{n}E_i\right)^c
-            =
-            \bigcup_{i=1}^{n}E_i^c
+            {"\\left(\\bigcap_{i=1}^{n}E_i\\right)^c = \\bigcup_{i=1}^{n}E_i^c"}
           </Formula>
 
           <div className="mt-8 rounded-2xl border border-neutral-200 bg-neutral-50 p-6">
@@ -913,7 +886,7 @@ export default function SampleSpaceAndEventsPage() {
                 </p>
 
                 <Formula>
-                  E^c = \{(i,j): i+j < 10\}
+                  {"E^c = \\{(i,j): i+j < 10\\}"}
                 </Formula>
               </div>
             </details>
