@@ -44,7 +44,7 @@ export default function LessonLayout({
           <span>/</span>
 
           <a
-            href="/learn/statistics-probability"
+            href="/learn/engineering-probability"
             className="hover:text-black"
           >
             {courseTitle}

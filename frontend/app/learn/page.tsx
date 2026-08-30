@@ -279,7 +279,7 @@ export default function LearnPage() {
           {paths.map((path) => (
             <Link
               key={path.title}
-              href="/learn/statistics-probability"
+              href="/learn/engineering-probability"
               className="group overflow-hidden rounded-2xl border border-neutral-200 bg-white transition duration-300 hover:-translate-y-1 hover:border-neutral-300 hover:shadow-lg"
             >
               {/* Card visual */}
