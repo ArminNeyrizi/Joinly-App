@@ -1,6 +1,6 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 9/8/2026, 7:36:26 PM*
+*Generated on: 9/8/2026, 9:41:53 PM*
 
 ## 📋 Quick Overview
 
