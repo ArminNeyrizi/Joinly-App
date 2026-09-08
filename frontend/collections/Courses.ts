@@ -2,9 +2,15 @@ import type { CollectionConfig } from 'payload'
 
 export const Courses: CollectionConfig = {
   slug: 'courses',
+
+  versions: {
+    drafts: true,
+  },
+
   admin: {
     useAsTitle: 'title',
   },
+
   fields: [
     {
       name: 'title',
@@ -12,29 +18,41 @@ export const Courses: CollectionConfig = {
       required: true,
       label: 'نام دوره',
     },
+
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
+      label: 'نامک',
     },
+
+    {
+      name: 'instructor',
+      type: 'relationship',
+      relationTo: 'users',
+      required: true,
+      label: 'مدرس',
+    },
+
     {
       name: 'curriculum',
       type: 'array',
       label: 'سرفصل‌های دوره',
+
       fields: [
         {
           name: 'chapterTitle',
           type: 'text',
           required: true,
-          label: 'عنوان فصل (مثلا: احتمالات مهندسی)',
+          label: 'عنوان فصل',
         },
+
         {
           name: 'lessons',
           type: 'relationship',
-          relationTo: 'articles', // اتصال جادویی به کالکشن مقالات
-          hasMany: true, // یک فصل می‌تواند چندین درس/مقاله داشته باشد
-          required: true,
+          relationTo: 'articles',
+          hasMany: true,
           label: 'درس‌های این فصل',
         },
       ],

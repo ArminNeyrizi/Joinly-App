@@ -125,7 +125,8 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: number;
-  name?: string | null;
+  name: string;
+  role: 'student' | 'instructor' | 'admin';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -152,10 +153,8 @@ export interface User {
 export interface Article {
   id: number;
   title: string;
-  /**
-   * این فیلد آدرس URL مقاله را می‌سازد (مثلا: basic-counting-principle)
-   */
   slug: string;
+  author: number | User;
   content: {
     root: {
       type: string;
@@ -173,6 +172,7 @@ export interface Article {
   };
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -182,15 +182,17 @@ export interface Course {
   id: number;
   title: string;
   slug: string;
+  instructor: number | User;
   curriculum?:
     | {
         chapterTitle: string;
-        lessons: (number | Article)[];
+        lessons?: (number | Article)[] | null;
         id?: string | null;
       }[]
     | null;
   updatedAt: string;
   createdAt: string;
+  _status?: ('draft' | 'published') | null;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -276,6 +278,7 @@ export interface PayloadMigration {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -300,9 +303,11 @@ export interface UsersSelect<T extends boolean = true> {
 export interface ArticlesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  author?: T;
   content?: T;
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -311,6 +316,7 @@ export interface ArticlesSelect<T extends boolean = true> {
 export interface CoursesSelect<T extends boolean = true> {
   title?: T;
   slug?: T;
+  instructor?: T;
   curriculum?:
     | T
     | {
@@ -320,6 +326,7 @@ export interface CoursesSelect<T extends boolean = true> {
       };
   updatedAt?: T;
   createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

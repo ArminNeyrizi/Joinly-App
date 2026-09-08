@@ -1,11 +1,17 @@
 import type { CollectionConfig } from 'payload'
-import { lexicalEditor } from '@payloadcms/richtext-lexical' // <-- ۱. ایمپورت ادیتور
+import { lexicalEditor } from '@payloadcms/richtext-lexical'
 
 export const Articles: CollectionConfig = {
   slug: 'articles',
+
+  versions: {
+    drafts: true,
+  },
+
   admin: {
     useAsTitle: 'title',
   },
+
   fields: [
     {
       name: 'title',
@@ -13,21 +19,29 @@ export const Articles: CollectionConfig = {
       required: true,
       label: 'عنوان مقاله / درس',
     },
+
     {
       name: 'slug',
       type: 'text',
       required: true,
       unique: true,
-      admin: {
-        description: 'این فیلد آدرس URL مقاله را می‌سازد (مثلا: basic-counting-principle)',
-      },
+      label: 'نامک',
     },
+
+    {
+      name: 'author',
+      type: 'relationship',
+      relationTo: 'users',
+      required: true,
+      label: 'نویسنده',
+    },
+
     {
       name: 'content',
       type: 'richText',
       required: true,
       label: 'محتوای اصلی',
-      editor: lexicalEditor(), // <-- ۲. اضافه کردن این خط
+      editor: lexicalEditor(),
     },
   ],
 }

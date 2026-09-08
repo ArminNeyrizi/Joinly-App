@@ -1,13 +1,13 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 9/8/2026, 9:41:53 PM*
+*Generated on: 9/8/2026, 11:17:24 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
-| 📄 Total Files | 69 |
-| 📁 Total Folders | 26 |
+| 📄 Total Files | 72 |
+| 📁 Total Folders | 28 |
 | 🌳 Max Depth | 7 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
@@ -32,14 +32,14 @@
 
 ### By File Type
 
-- 🔷 **.ts** (TypeScript files): 15 files (21.7%)
-- ⚛️ **.tsx** (React TypeScript files): 14 files (20.3%)
-- ⚙️ **.json** (JSON files): 10 files (14.5%)
-- 🔤 **.ttf** (TrueType fonts): 9 files (13.0%)
-- 📖 **.md** (Markdown files): 6 files (8.7%)
-- 🎨 **.svg** (SVG images): 5 files (7.2%)
-- 📄 **.mjs** (Other files): 3 files (4.3%)
-- 🚫 **.gitignore** (Git ignore): 2 files (2.9%)
+- 🔷 **.ts** (TypeScript files): 16 files (22.2%)
+- ⚛️ **.tsx** (React TypeScript files): 16 files (22.2%)
+- ⚙️ **.json** (JSON files): 10 files (13.9%)
+- 🔤 **.ttf** (TrueType fonts): 9 files (12.5%)
+- 📖 **.md** (Markdown files): 6 files (8.3%)
+- 🎨 **.svg** (SVG images): 5 files (6.9%)
+- 📄 **.mjs** (Other files): 3 files (4.2%)
+- 🚫 **.gitignore** (Git ignore): 2 files (2.8%)
 - 📄 **.** (Other files): 1 files (1.4%)
 - 📜 **.js** (JavaScript files): 1 files (1.4%)
 - 🖼️ **.ico** (Icon files): 1 files (1.4%)
@@ -48,21 +48,21 @@
 
 ### By Category
 
-- **TypeScript**: 15 files (21.7%)
-- **Assets**: 15 files (21.7%)
-- **React**: 14 files (20.3%)
-- **Config**: 10 files (14.5%)
-- **Docs**: 6 files (8.7%)
-- **Other**: 5 files (7.2%)
-- **DevOps**: 2 files (2.9%)
+- **TypeScript**: 16 files (22.2%)
+- **React**: 16 files (22.2%)
+- **Assets**: 15 files (20.8%)
+- **Config**: 10 files (13.9%)
+- **Docs**: 6 files (8.3%)
+- **Other**: 5 files (6.9%)
+- **DevOps**: 2 files (2.8%)
 - **JavaScript**: 1 files (1.4%)
 - **Styles**: 1 files (1.4%)
 
 ### 📁 Largest Directories
 
-- **root**: 69 files
-- **frontend**: 51 files
-- **frontend/app**: 19 files
+- **root**: 72 files
+- **frontend**: 54 files
+- **frontend/app**: 20 files
 - **backend**: 15 files
 - **frontend/public**: 14 files
 
@@ -93,6 +93,10 @@ joinly-app/
 │   ├── 📖 AGENTS.md
 │   ├── 🚀 app/
 │   │   ├── 📂 (frontend)/
+│   │   │   ├── 📂 articles/
+│   │   │   │   ├── 📂 [slug]/
+│   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   └── ⚛️ page.tsx
 │   │   │   ├── ⚛️ layout.tsx
 │   │   │   ├── 📂 learn/
 │   │   │   │   ├── 📂 engineering-probability/
@@ -110,8 +114,7 @@ joinly-app/
 │   │   │   │   ├── 📂 [[...segments]]/
 │   │   │   │   │   ├── ⚛️ not-found.tsx
 │   │   │   │   │   └── ⚛️ page.tsx
-│   │   │   │   ├── 📜 importMap.js
-│   │   │   │   └── 🔷 importMap.ts
+│   │   │   │   └── 📜 importMap.js
 │   │   │   ├── 🔌 api/
 │   │   │   │   └── 📂 [...slug]/
 │   │   │   │   │   └── 🔷 route.ts
@@ -127,6 +130,8 @@ joinly-app/
 │   │   └── 🎨 globals.css
 │   ├── 📖 CLAUDE.md
 │   ├── 📂 collections/
+│   │   ├── 🔷 Articles.ts
+│   │   ├── 🔷 Courses.ts
 │   │   └── 🔷 Users.ts
 │   ├── 📂 content/
 │   │   └── 📂 probability/
