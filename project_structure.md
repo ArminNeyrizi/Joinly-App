@@ -1,14 +1,14 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 9/8/2026, 7:16:16 PM*
+*Generated on: 9/8/2026, 7:36:26 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
 | 📄 Total Files | 69 |
-| 📁 Total Folders | 25 |
-| 🌳 Max Depth | 6 levels |
+| 📁 Total Folders | 26 |
+| 🌳 Max Depth | 7 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
 ## ⭐ Important Files
@@ -92,6 +92,19 @@ joinly-app/
 │   ├── 🟡 🚫 **.gitignore**
 │   ├── 📖 AGENTS.md
 │   ├── 🚀 app/
+│   │   ├── 📂 (frontend)/
+│   │   │   ├── ⚛️ layout.tsx
+│   │   │   ├── 📂 learn/
+│   │   │   │   ├── 📂 engineering-probability/
+│   │   │   │   │   ├── 📂 axioms-of-probability/
+│   │   │   │   │   │   ├── 📂 introduction/
+│   │   │   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   │   │   └── 📂 sample-space-and-events/
+│   │   │   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   └── ⚛️ page.tsx
+│   │   │   ├── ⚛️ page.tsx
+│   │   │   └── 📂 projects/
 │   │   ├── 📂 (payload)/
 │   │   │   ├── 📂 admin/
 │   │   │   │   ├── 📂 [[...segments]]/
@@ -111,19 +124,7 @@ joinly-app/
 │   │   │   │   ├── ⚛️ LessonNavigation.tsx
 │   │   │   │   └── ⚛️ LessonSidebar.tsx
 │   │   ├── 🖼️ favicon.ico
-│   │   ├── 🎨 globals.css
-│   │   ├── ⚛️ layout.tsx
-│   │   ├── 📂 learn/
-│   │   │   ├── 📂 engineering-probability/
-│   │   │   │   ├── 📂 axioms-of-probability/
-│   │   │   │   │   ├── 📂 introduction/
-│   │   │   │   │   │   └── ⚛️ page.tsx
-│   │   │   │   │   └── 📂 sample-space-and-events/
-│   │   │   │   │   │   └── ⚛️ page.tsx
-│   │   │   │   └── ⚛️ page.tsx
-│   │   │   └── ⚛️ page.tsx
-│   │   ├── ⚛️ page.tsx
-│   │   └── 📂 projects/
+│   │   └── 🎨 globals.css
 │   ├── 📖 CLAUDE.md
 │   ├── 📂 collections/
 │   │   └── 🔷 Users.ts

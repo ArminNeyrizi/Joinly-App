@@ -3,7 +3,7 @@ import sharp from 'sharp'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
 
-import { Users } from './collections/Users.ts'
+import { Users } from './collections/Users'
 
 export default buildConfig({
   admin: {
