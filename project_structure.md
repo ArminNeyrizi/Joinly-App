@@ -1,14 +1,14 @@
 # 📁 joinly-app - Project Structure
 
-*Generated on: 8/25/2026, 10:08:38 PM*
+*Generated on: 9/8/2026, 7:16:16 PM*
 
 ## 📋 Quick Overview
 
 | Metric | Value |
 |--------|-------|
-| 📄 Total Files | 46 |
-| 📁 Total Folders | 7 |
-| 🌳 Max Depth | 3 levels |
+| 📄 Total Files | 69 |
+| 📁 Total Folders | 25 |
+| 🌳 Max Depth | 6 levels |
 | 🛠️ Tech Stack | React, Next.js, TypeScript, CSS, Node.js |
 
 ## ⭐ Important Files
@@ -26,41 +26,45 @@
 - 🟡 🔒 **package-lock.json** - Dependency lock
 - 🔴 📦 **package.json** - Package configuration
 - 🟡 🔷 **tsconfig.json** - TypeScript config
+- 🔵 ▲ **vercel.json** - Vercel config
 
 ## 📊 File Statistics
 
 ### By File Type
 
-- 🔤 **.ttf** (TrueType fonts): 9 files (19.6%)
-- ⚙️ **.json** (JSON files): 8 files (17.4%)
-- 🔷 **.ts** (TypeScript files): 8 files (17.4%)
-- 📖 **.md** (Markdown files): 6 files (13.0%)
-- 🎨 **.svg** (SVG images): 5 files (10.9%)
-- 📄 **.mjs** (Other files): 3 files (6.5%)
-- 🚫 **.gitignore** (Git ignore): 2 files (4.3%)
-- ⚛️ **.tsx** (React TypeScript files): 2 files (4.3%)
-- 📄 **.** (Other files): 1 files (2.2%)
-- 🖼️ **.ico** (Icon files): 1 files (2.2%)
-- 🎨 **.css** (Stylesheets): 1 files (2.2%)
+- 🔷 **.ts** (TypeScript files): 15 files (21.7%)
+- ⚛️ **.tsx** (React TypeScript files): 14 files (20.3%)
+- ⚙️ **.json** (JSON files): 10 files (14.5%)
+- 🔤 **.ttf** (TrueType fonts): 9 files (13.0%)
+- 📖 **.md** (Markdown files): 6 files (8.7%)
+- 🎨 **.svg** (SVG images): 5 files (7.2%)
+- 📄 **.mjs** (Other files): 3 files (4.3%)
+- 🚫 **.gitignore** (Git ignore): 2 files (2.9%)
+- 📄 **.** (Other files): 1 files (1.4%)
+- 📜 **.js** (JavaScript files): 1 files (1.4%)
+- 🖼️ **.ico** (Icon files): 1 files (1.4%)
+- 🎨 **.css** (Stylesheets): 1 files (1.4%)
+- 📄 **.mdx** (Other files): 1 files (1.4%)
 
 ### By Category
 
-- **Assets**: 15 files (32.6%)
-- **Config**: 8 files (17.4%)
-- **TypeScript**: 8 files (17.4%)
-- **Docs**: 6 files (13.0%)
-- **Other**: 4 files (8.7%)
-- **DevOps**: 2 files (4.3%)
-- **React**: 2 files (4.3%)
-- **Styles**: 1 files (2.2%)
+- **TypeScript**: 15 files (21.7%)
+- **Assets**: 15 files (21.7%)
+- **React**: 14 files (20.3%)
+- **Config**: 10 files (14.5%)
+- **Docs**: 6 files (8.7%)
+- **Other**: 5 files (7.2%)
+- **DevOps**: 2 files (2.9%)
+- **JavaScript**: 1 files (1.4%)
+- **Styles**: 1 files (1.4%)
 
 ### 📁 Largest Directories
 
-- **root**: 46 files
-- **frontend**: 29 files
+- **root**: 69 files
+- **frontend**: 51 files
+- **frontend/app**: 19 files
 - **backend**: 15 files
 - **frontend/public**: 14 files
-- **frontend/public/fonts**: 9 files
 
 ## 🌳 Directory Structure
 
@@ -88,16 +92,56 @@ joinly-app/
 │   ├── 🟡 🚫 **.gitignore**
 │   ├── 📖 AGENTS.md
 │   ├── 🚀 app/
+│   │   ├── 📂 (payload)/
+│   │   │   ├── 📂 admin/
+│   │   │   │   ├── 📂 [[...segments]]/
+│   │   │   │   │   ├── ⚛️ not-found.tsx
+│   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   ├── 📜 importMap.js
+│   │   │   │   └── 🔷 importMap.ts
+│   │   │   ├── 🔌 api/
+│   │   │   │   └── 📂 [...slug]/
+│   │   │   │   │   └── 🔷 route.ts
+│   │   │   └── ⚛️ layout.tsx
+│   │   ├── 🧩 components/
+│   │   │   └── 📂 learning/
+│   │   │   │   ├── ⚛️ LearningFooter.tsx
+│   │   │   │   ├── ⚛️ LearningHeader.tsx
+│   │   │   │   ├── ⚛️ LessonLayout.tsx
+│   │   │   │   ├── ⚛️ LessonNavigation.tsx
+│   │   │   │   └── ⚛️ LessonSidebar.tsx
 │   │   ├── 🖼️ favicon.ico
 │   │   ├── 🎨 globals.css
 │   │   ├── ⚛️ layout.tsx
-│   │   └── ⚛️ page.tsx
+│   │   ├── 📂 learn/
+│   │   │   ├── 📂 engineering-probability/
+│   │   │   │   ├── 📂 axioms-of-probability/
+│   │   │   │   │   ├── 📂 introduction/
+│   │   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   │   └── 📂 sample-space-and-events/
+│   │   │   │   │   │   └── ⚛️ page.tsx
+│   │   │   │   └── ⚛️ page.tsx
+│   │   │   └── ⚛️ page.tsx
+│   │   ├── ⚛️ page.tsx
+│   │   └── 📂 projects/
 │   ├── 📖 CLAUDE.md
+│   ├── 📂 collections/
+│   │   └── 🔷 Users.ts
+│   ├── 📂 content/
+│   │   └── 📂 probability/
+│   │   │   └── 📂 combinatorial-analysis/
+│   │   │   │   └── 📄 basic-counting-principle.mdx
 │   ├── 🔵 🔍 **eslint.config.mjs**
+│   ├── 📂 migrations/
+│   │   ├── ⚙️ 20260908_153939_init.json
+│   │   ├── 🔷 20260908_153939_init.ts
+│   │   └── 🔷 index.ts
 │   ├── 🔷 next-env.d.ts
 │   ├── 🟡 ▲ **next.config.ts**
 │   ├── 🟡 🔒 **package-lock.json**
 │   ├── 🔴 📦 **package.json**
+│   ├── 🔷 payload-types.ts
+│   ├── 🔷 payload.config.ts
 │   ├── 📄 postcss.config.mjs
 │   ├── 🌐 public/
 │   │   ├── 🎨 file.svg
@@ -118,7 +162,8 @@ joinly-app/
 │   ├── 🔴 📖 **README.md**
 │   └── 🟡 🔷 **tsconfig.json**
 ├── 📖 project_structure.md
-└── 🔴 📖 **README.md**
+├── 🔴 📖 **README.md**
+└── 🔵 ▲ **vercel.json**
 ```
 
 ## 📖 Legend
@@ -129,9 +174,10 @@ joinly-app/
 - 📄 Other: Other files
 - ⚙️ Config: JSON files
 - 🔷 TypeScript: TypeScript files
+- ⚛️ React: React TypeScript files
+- 📜 JavaScript: JavaScript files
 - 🖼️ Assets: Icon files
 - 🎨 Styles: Stylesheets
-- ⚛️ React: React TypeScript files
 - 🎨 Assets: SVG images
 - 🔤 Assets: TrueType fonts
 
