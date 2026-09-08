@@ -1,11 +1,10 @@
 import sharp from 'sharp'
-// import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { buildConfig } from 'payload'
 
 import { Users } from './collections/Users'
 
-export default buildConfig({
+const config = buildConfig({
   admin: {
     user: 'users',
   },
@@ -13,8 +12,6 @@ export default buildConfig({
   collections: [
     Users,
   ],
-
- // editor: lexicalEditor(),
 
   secret: process.env.PAYLOAD_SECRET || '',
 
@@ -28,3 +25,5 @@ export default buildConfig({
 
   sharp,
 })
+
+export default config

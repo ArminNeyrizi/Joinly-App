@@ -1,5 +1,4 @@
 import type { Metadata } from 'next'
-import type { ReactNode } from 'react'
 
 import config from '@payload-config'
 import { generatePageMetadata, RootPage } from '@payloadcms/next/views'
@@ -8,10 +7,10 @@ import { importMap } from '../importMap'
 
 type Args = {
   params: Promise<{
-    segments?: string[]
+    segments: string[]
   }>
   searchParams: Promise<{
-    [key: string]: string | string[] | undefined
+    [key: string]: string | string[]
   }>
 }
 
